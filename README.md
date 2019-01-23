@@ -1,2 +1,6 @@
 # Advanced-Embedded-Software-Development
-Consists of Projects and Assignments Completed in Advanced Embedded Software Development Course | ECEN 5013-002 | University of Colorado, Boulder. 
+Projects completed under Prof. Rick Heidebrecht in Advanced Embedded Software Development.
+
+Each Project consists of a readme file describing about the Project.
+
+Contributor - Siddhant Jajoo
