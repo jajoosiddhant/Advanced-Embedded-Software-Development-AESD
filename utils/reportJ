@@ -3,38 +3,40 @@ uid=1000(siddhant) gid=1000(siddhant) groups=1000(siddhant),4(adm),24(cdrom),27(
 
 OS type, version, Kernel, architecture information
 Linux siddhant-VirtualBox 4.15.0-43-generic #46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+Kernal GCC version
+Linux version 4.15.0-43-generic (buildd@lgw01-amd64-001) (gcc version 7.3.0 (Ubuntu 7.3.0-16ubuntu3)) #46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018
 System memory information
 MemTotal:        6620016 kB
-MemFree:         4088324 kB
-MemAvailable:    4805476 kB
-Buffers:           78140 kB
-Cached:           872648 kB
+MemFree:         4652656 kB
+MemAvailable:    5361968 kB
+Buffers:           61256 kB
+Cached:           849144 kB
 SwapCached:            0 kB
-Active:          1809996 kB
-Inactive:         533704 kB
-Active(anon):    1394092 kB
-Inactive(anon):    43316 kB
-Active(file):     415904 kB
-Inactive(file):   490388 kB
+Active:          1329132 kB
+Inactive:         459140 kB
+Active(anon):     878708 kB
+Inactive(anon):    11908 kB
+Active(file):     450424 kB
+Inactive(file):   447232 kB
 Unevictable:          16 kB
 Mlocked:              16 kB
 SwapTotal:       2097148 kB
 SwapFree:        2097148 kB
-Dirty:               496 kB
+Dirty:               516 kB
 Writeback:             0 kB
-AnonPages:       1392992 kB
-Mapped:           366848 kB
-Shmem:             44500 kB
-Slab:              85704 kB
-SReclaimable:      48440 kB
-SUnreclaim:        37264 kB
-KernelStack:       11516 kB
-PageTables:        46308 kB
+AnonPages:        877872 kB
+Mapped:           238292 kB
+Shmem:             12748 kB
+Slab:              84432 kB
+SReclaimable:      50032 kB
+SUnreclaim:        34400 kB
+KernelStack:        9472 kB
+PageTables:        41404 kB
 NFS_Unstable:          0 kB
 Bounce:                0 kB
 WritebackTmp:          0 kB
 CommitLimit:     5407156 kB
-Committed_AS:    6012428 kB
+Committed_AS:    5010648 kB
 VmallocTotal:   34359738367 kB
 VmallocUsed:           0 kB
 VmallocChunk:          0 kB
@@ -49,5 +51,5 @@ HugePages_Free:        0
 HugePages_Rsvd:        0
 HugePages_Surp:        0
 Hugepagesize:       2048 kB
-DirectMap4k:      133056 kB
-DirectMap2M:     6682624 kB
+DirectMap4k:      126912 kB
+DirectMap2M:     6688768 kB

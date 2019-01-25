@@ -5,6 +5,8 @@ id >> reportJ
 echo "
 OS type, version, Kernel, architecture information" >> reportJ
 uname -a >> reportJ
+echo "Kernal GCC version" >> reportJ
+cat /proc/version >> reportJ
 echo "System memory information" >> reportJ
 cat /proc/meminfo  >> reportJ
 
