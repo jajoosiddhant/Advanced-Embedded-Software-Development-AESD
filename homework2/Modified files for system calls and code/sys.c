@@ -844,58 +844,6 @@ SYSCALL_DEFINE0(getpid)
 
 
 /*
-*Function for swapping two numbers
-
-void swap_elements(int32_t *a,int32_t *b)
-{
-int32_t temp;
-
-temp = *a;
-*a = *b;
-*b = temp;
-}
-*/
-
-/*
-*Function for merge Sort Partition
-
-int32_t subarray_create(int32_t *buff, int32_t first, int32_t last)
-{
-int32_t pivot = buff[last];
-int i = first - 1;
-int j;
-
-for(j=0;j<last;j++)
-{
-if(buff[j] >= pivot)
-{
-i++;
-swap_elements(&buff[i],&buff[j]);
-}
-}
-swap_elements(&buff[i+1],&buff[last]);
-return (i+1);
-}
-*/
-
-
-/*
-*Function for merge Sort.
-
-void mso(int32_t *buff, int32_t first, int32_t last)
-{
-int32_t m;
-if(first<last)
-{
-m = subarray_create(buff,first,last);
-
-mso(buff,first,m-1);
-mso(buff,m+1,last);
-}
-}
-*/
-
-/*
 *Function for Comparison.
 */
 int compare(const void *a, const void *b)
@@ -913,11 +861,18 @@ SYSCALL_DEFINE3(mycall, int32_t*,arr,int32_t,length,int32_t*,sorted_arr)
 {
 printk("Kindly proceed to complete the actual system call.\n");
 
+if(length == 0)
+{
+printf("Length Cannot be zero. ERROR!!");
+return -EINVAL;
+}
+
 int32_t number_byte = length * sizeof(int32_t); 
 int32_t *buff = kmalloc(number_byte, GFP_KERNEL);
 if(buff == NULL)
 {
 printk("ERROR!! Buffer Memory not allocated.\n");
+return -ENOM;
 }
 int32_t temp;
 int32_t i;
@@ -937,7 +892,6 @@ printk("Kernel Space Random number at Position %d is %d.\n", i, buff[i]);
 }
 
 
-//mso(buff,0,length-1);
 sort(buff,length,sizeof(int32_t),compare,NULL);
 
 
