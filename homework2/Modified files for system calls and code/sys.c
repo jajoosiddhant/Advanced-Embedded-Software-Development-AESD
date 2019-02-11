@@ -863,7 +863,7 @@ printk("Kindly proceed to complete the actual system call.\n");
 
 if(length == 0)
 {
-printf("Length Cannot be zero. ERROR!!");
+printk("Length Cannot be zero. ERROR!!");
 return -EINVAL;
 }
 
@@ -872,14 +872,14 @@ int32_t *buff = kmalloc(number_byte, GFP_KERNEL);
 if(buff == NULL)
 {
 printk("ERROR!! Buffer Memory not allocated.\n");
-return -ENOM;
+return -ENOMEM;
 }
 int32_t temp;
 int32_t i;
 //int32_t i,p,q;
 
 printk("Copying contents from user space to kernel space:\n");
-if(copy_from_user(buff, arr, number_byte))
+if(copy_from_user(buff, NULL, number_byte))
 { 
 printk("Error!\n");
 return -EFAULT;
