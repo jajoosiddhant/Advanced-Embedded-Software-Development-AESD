@@ -1,3 +1,11 @@
+/***************************************************/
+/*
+/*File Name: File IO
+/*Description: Perform various actions on a file.
+/*Author: Siddhant Jajoo
+/*Date: 02/10/2019
+/***************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 
