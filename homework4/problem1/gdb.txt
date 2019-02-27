@@ -1,0 +1,508 @@
+Debugging with GDB
+Bugs happen. Identifying and fixing them is part of the development process. There are
+many different techniques for finding and characterizing program defects, including static
+and dynamic analysis, code review, tracing, profiling, and interactive debugging. I will look
+at tracers and profilers in the next chapter, but here I want to concentrate on the traditional
+approach of watching code execution through a debugger, which in our case is the GNU
+Project Debugger (GDB). GDB is a powerful and flexible tool. You can use it to debug
+applications, examine the postmortem files (core files) that are created after a program
+crash, and even step through kernel code.
+In this chapter, we will cover the following topics:
+The GNU debugger
+Preparing to debug
+Debugging applications
+Just-in-time debugging
+Debugging forks and threads
+Core files
+GDB user interfaces
+Debugging kernel code
+The GNU debugger
+GDB is a source-level debugger for compiled languages, primarily C and C++, although
+there is also support for a variety of other languages such as Go and Objective-C. You
+should read the notes for the version of GDB you are using to find out the current status of
+support for the various languages.
+Debugging with GDB
+[ 357 ]
+The project website is http://www.gnu.org/software/gdb and it contains a lot of useful
+information, including the GDB User Manual, Debugging with GDB.
+Out of the box, GDB has a command-line user interface, which some people find offputting,
+although in reality, it is easy to use with a little practice. If command-line interfaces
+are not to your liking, there are plenty of front-end user interfaces to GDB, and I will
+describe three of them later.
+Preparing to debug
+You need to compile the code you want to debug with debug symbols. GCC offers two
+options for this: -g and -ggdb. The latter adds debug information that is specific to GDB,
+whereas the former generates information in an appropriate format for whichever target
+operating system you are using, making it the more portable option. In our particular case,
+the target operating system is always Linux, and it makes little difference whether you use
+-g or -ggdb. Of more interest is the fact that both options allow you to specify the level of
+debug information, from 0 to 3:
+0: This produces no debug information at all and is equivalent to omitting the -g
+or -ggdb switch
+1: This produces minimal information, but which includes function names and
+external variables, which is enough to generate a backtrace
+2: This is the default and includes information about local variables and line
+numbers so that you can perform source-level debugging and single-step through
+the code
+3: This includes extra information which, among other things, means that GDB
+can handle macro expansions correctly
+In most cases, -g suffices: reserve -g3 or -ggdb3 for if you are having problems stepping
+through code, especially if it contains macros.
+The next issue to consider is the level of code optimization. Compiler optimization tends to
+destroy the relationship between lines of source code and machine code, which makes
+stepping through the source unpredictable. If you experience problems like this, you will
+most likely need to compile without optimization, leaving out the -O compile switch, or
+using -Og, which enables optimizations that do not interfere with debugging.
+Debugging with GDB
+[ 358 ]
+A related issue is that of stack-frame pointers, which are needed by GDB to generate a
+backtrace of function calls up to the current one. On some architectures, GCC will not
+generate stack-frame pointers with the higher levels of optimization (-O2 and above). If you
+find yourself in the situation that you really have to compile with -O2 but still want
+backtraces, you can override the default behavior with -fno-omit-frame-pointer. Also
+look out for code that has been hand-optimized to leave out frame pointers through the
+addition of -fomit-frame-pointer: you may want to temporarily remove those bits.
+Debugging applications
+You can use GDB to debug applications in one of two ways: if you are developing code to
+run on desktops and servers, or indeed any environment where you compile and run the
+code on the same machine, it is natural to run GDB natively. However, most embedded
+development is done using a cross toolchain, and hence you want to debug code running on
+the device but control it from the cross-development environment, where you have the
+source code and the tools. I will focus on the latter case since it is the most likely scenario
+for embedded developers, but I will also show you how to set up a system for native
+debugging. I am not going to describe the basics of using GDB here since there are many
+good references on that topic already, including the GDB user manual and the suggested
+Further reading at the end of the chapter.
+Remote debugging using gdbserver
+The key component for remote debugging is the debug agent, gdbserver, which runs on the
+target and controls execution of the program being debugged. gdbserver connects to a copy
+of GDB running on the host machine via a network connection or a serial interface.
+Debugging through gdbserver is almost, but not quite, the same as debugging natively. The
+differences are mostly centered around the fact that there are two computers involved and
+they have to be in the right state for debugging to take place. Here are some things to look
+out for:
+At the start of a debug session, you need to load the program you want to debug
+on the target using gdbserver, and then separately load GDB from your cross
+toolchain on the host.
+GDB and gdbserver need to connect to each other before a debug session can
+begin.
+GDB, running on the host, needs to be told where to look for debug symbols and
+source code, especially for shared libraries.
+Debugging with GDB
+[ 359 ]
+The GDB run command does not work as expected.
+gdbserver will terminate when the debug session ends, and you will need to
+restart it if you want another debug session.
+You need debug symbols and source code for the binaries you want to debug on
+the host, but not on the target. Often, there is not enough storage space for them
+on the target, and they will need to be stripped before deploying to the target.
+The GDB/gdbserver combination does not support all the features of natively
+running GDB: for example, gdbserver cannot follow the child process after a
+fork, whereas native GDB can.
+Odd things can happen if GDB and gdbserver are of different versions, or are the
+same version but configured differently. Ideally, they should be built from the
+same source using your favorite build tool.
+Debug symbols increase the size of executables dramatically, sometimes by a factor of 10.
+As mentioned in Chapter 5, Building a Root Filesystem, it can be useful to remove debug
+symbols without recompiling everything. The tool for the job is strip from your cross
+toolchain. You can control the aggressiveness of strip with these switches:
+--strip-all: This removes all symbols (default)
+--strip-unneeded: This removes symbols not needed for relocation processing
+--strip-debug: This removes only debug symbols
+For applications and shared libraries, --strip-all (the default) is fine,
+but when it comes to kernel modules, you will find that it will stop the
+module from loading. Use --strip-unneeded instead. I am still working
+on a use case for –strip-debug.
+With that in mind, let's look at the specifics involved in debugging with the Yocto Project
+and Buildroot.
+Setting up the Yocto Project for remote
+debugging
+There are two things to be done to debug applications remotely when using the Yocto
+Project: you need to add gdbserver to the target image, and you need to create an SDK that
+includes GDB and has debug symbols for the executables that you plan to debug.
+Debugging with GDB
+[ 360 ]
+First, then, to include gdbserver in the target image, you can add the package explicitly by
+adding this to conf/local.conf:
+IMAGE_INSTALL_append = " gdbserver"
+Alternatively, you can add tools-debug to EXTRA_IMAGE_FEATURES, which will add
+gdbserver, native gdb, and strace to the target image (I will talk about strace in the next
+chapter):
+EXTRA_IMAGE_FEATURES = "debug-tweaks tools-debug"
+For the second part, you just need to build an SDK as I described in Chapter 6, Selecting a
+Build System:
+$ bitbake -c populate_sdk <image>
+The SDK contains a copy of GDB. It also contains a sysroot for the target with debug
+symbols for all the programs and libraries that are part of the target image. Finally, the SDK
+contains the source code for the executables. For example, looking at an SDK built for the
+BeagleBone Black and generated by version 2.2.1 of the Yocto Project, it is installed by
+default into /opt/poky/2.2.1/. The sysroot for the target is
+/opt/poky/2.2.1/sysroots/cortexa8hf-neon-poky-linux-gnueabi/. The
+programs are in /bin/, /sbin/, /usr/bin/ and /usr/sbin/, relative to the sysroot, and
+the libraries are in /lib/ and /usr/lib/. In each of these directories, you will find a
+subdirectory named .debug/ that contains the symbols for each program and library. GDB
+knows to look in .debug/ when searching for symbol information. The source code for the
+executables is stored in /usr/src/debug/, relative to the sysroot.
+Setting up Buildroot for remote debugging
+Buildroot does not make a distinction between the build environment and that used for
+application development: there is no SDK. Assuming that you are using the Buildroot
+internal toolchain, you need to enable these options to build the cross GDB for the host and
+to build gdbserver for the target:
+BR2_PACKAGE_HOST_GDB, in Toolchain | Build cross gdb for the host
+BR2_PACKAGE_GDB, in Target packages | Debugging, profiling and
+benchmark->gdb
+BR2_PACKAGE_GDB_SERVER, in Target packages | Debugging, profiling and
+benchmark | gdbserver
+Debugging with GDB
+[ 361 ]
+You also need to build executables with debug symbols, for which you need to enable
+BR2_ENABLE_DEBUG, in Build options | build packages with debugging symbols.
+This will create libraries with debug symbols in output/host/usr/<arch>/sysroot.
+Starting to debug
+Now that you have gdbserver installed on the target and a cross GDB on the host, you can
+start a debug session.
+Connecting GDB and gdbserver
+The connection between GDB and gdbserver can be through a network or serial interface. In
+the case of a network connection, you launch gdbserver with the TCP port number to listen
+on and, optionally, an IP address to accept connections from. In most cases, you don't care
+which IP address is going to connect, so you can just provide the port number. In this
+example, gdbserver waits for a connection on port 10000 from any host:
+# gdbserver :10000 ./hello-world
+Process hello-world created; pid = 103
+Listening on port 10000
+Next, start the copy of GDB from your toolchain, pointing it at an unstripped copy of the
+program so that GDB can load the symbol table:
+$ arm-poky-linux-gnueabi-gdb hello-world
+In GDB, use the command target remote to make the connection to gdbserver, giving it
+the IP address or hostname of the target and the port it is waiting on:
+(gdb) target remote 192.168.1.101:10000
+When gdbserver sees the connection from the host, it prints the following:
+Remote debugging from host 192.168.1.1
+The procedure is similar for a serial connection. On the target, you tell gdbserver which
+serial port to use:
+# gdbserver /dev/ttyO0 ./hello-world
+Debugging with GDB
+[ 362 ]
+You may need to configure the port baud rate beforehand using stty(1) or a similar
+program. A simple example would be as follows:
+# stty -F /dev/ttyO0 115200
+There are many other options to stty, so read the manual page for more details. It is
+worthwhile noting that the port must not be being used for anything else. For example, you
+can't use a port that is being used as the system console.
+On the host, you make the connection to gdbserver using target remote plus the serial
+device at the host end of the cable. In most cases, you will want to set the baud rate of the
+host serial port first, using the GDB command set serial baud:
+(gdb) set serial baud 115200
+(gdb) target remote /dev/ttyUSB0
+Setting the sysroot
+GDB needs to know where to find debug information and source code for the program and
+shared libraries you are debugging. When debugging natively, the paths are well known
+and built in to GDB, but when using a cross toolchain, GDB has no way to guess where the
+root of the target filesystem is. You have to give it this information.
+If you built your application using the Yocto Project SDK, the sysroot is within the SDK,
+and so you can set it in GDB like this:
+(gdb) set sysroot /opt/poky/2.2.1/sysroots/cortexa8hf-neon-poky-linuxgnueabi
+If you are using Buildroot, you will find that the sysroot is in
+output/host/usr/<toolchain>/sysroot, and that there is a symbolic link to it in
+output/staging. So, for Buildroot, you would set the sysroot like this:
+(gdb) set sysroot /home/chris/buildroot/output/staging
+GDB also needs to find the source code for the files you are debugging. GDB has a search
+path for source files, which you can see using the command show directories:
+(gdb) show directories
+Source directories searched: $cdir:$cwd
+Debugging with GDB
+[ 363 ]
+These are the defaults: $cwd is the current working directory of the GDB instance running
+on the host; $cdir is the directory where the source was compiled. The latter is encoded
+into the object files with the tag DW_AT_comp_dir. You can see these tags using objdump -
+-dwarf, like this, for example:
+$ arm-poky-linux-gnueabi-objdump --dwarf ./helloworld | grep DW_AT_comp_dir
+[...]
+<160> DW_AT_comp_dir : (indirect string, offset: 0x244):
+/home/chris/helloworld
+[...]
+In most cases, the defaults, $cdir:$cwd, are sufficient, but problems arise if the directories
+have been moved between compilation and debugging. One such case occurs with the
+Yocto Project. Taking a deeper look at the DW_AT_comp_dir tags for a program compiled
+using the Yocto Project SDK, you may notice this:
+$ arm-poky-linux-gnueabi-objdump --dwarf ./helloworld | grep DW_AT_comp_dir
+<2f> DW_AT_comp_dir : /usr/src/debug/glibc/2.24-r0/git/csu
+<79> DW_AT_comp_dir : (indirect string, offset: 0x139):
+/usr/src/debug/glibc/2.24-r0/git/csu
+<116> DW_AT_comp_dir : /usr/src/debug/glibc/2.24-r0/git/csu
+<160> DW_AT_comp_dir : (indirect string, offset: 0x244):
+/home/chris/helloworld
+[...]
+Here, you can see multiple references to the directory /usr/src/debug/glibc/2.24-
+r0/git, but where is it? The answer is that it is in the sysroot for the SDK, so the full path
+is /opt/poky/2.2.1/sysroots/cortexa8hf-neon-poky-linuxgnueabi/
+usr/src/debug/glibc/2.24-r0/git. The SDK contains source code for all of
+the programs and libraries that are in the target image. GDB has a simple way to cope with
+an entire directory tree being moved like this: substitute-path. So, when debugging
+with the Yocto Project SDK, you need to use these commands:
+(gdb) set sysroot /opt/poky/2.2.1/sysroots/cortexa8hf-neon-poky-linuxgnueabi
+(gdb) set substitute-path /usr/src/debug
+/opt/poky/2.2.1/sysroots/cortexa8hf-neon-poky-linux-gnueabi/usr/src/debug
+You may have additional shared libraries that are stored outside the sysroot. In that case,
+you can use set solib-search-path, which can contain a colon-separated list of
+directories to search for shared libraries. GDB searches solib-search-path only if it
+cannot find the binary in the sysroot.
+Debugging with GDB
+[ 364 ]
+A third way of telling GDB where to look for source code, for both libraries and programs,
+is using the directory command:
+(gdb) directory /home/chris/MELP/src/lib_mylib
+Source directories searched: /home/chris/MELP/src/lib_mylib:$cdir:$cwd
+Paths added in this way take precedence because they are searched before those from
+sysroot or solib-search-path.
+GDB command files
+There are some things that you need to do each time you run GDB, for example, setting the
+sysroot. It is convenient to put such commands into a command file and run them each
+time GDB is started. GDB reads commands from $HOME/.gdbinit, then from .gdbinit in
+the current directory, and then from files specified on the command line with the -x
+parameter. However, recent versions of GDB will refuse to load .gdbinit from the current
+directory for security reasons. You can override that behavior for by adding a line like this
+to your $HOME/.gdbinit:
+set auto-load safe-path /
+Alternatively, if you don't want to enable auto-loading globally, you can specify a particular
+directory like this:
+add-auto-load-safe-path /home/chris/myprog
+My personal preference is to use the -x parameter to point to the command file, which
+exposes the location of the file so that I don't forget about it.
+To help you set up GDB, Buildroot creates a GDB command file containing the correct
+sysroot command in output/staging/usr/share/buildroot/gdbinit. It will contain
+a line similar to this one:
+set sysroot /home/chris/buildroot/output/host/usr/arm-buildroot-linuxgnueabi/
+sysroot
+Debugging with GDB
+[ 365 ]
+Overview of GDB commands
+GDB has a great many commands, which are described in the online manual and in the
+resources mentioned in the Further reading section. To help you get going as quickly as
+possible, here is a list of the most commonly used commands. In most cases there, is a short
+form for the command, which is listed in the tables following.
+Breakpoints
+These are the commands for managing breakpoints:
+Command Short-form command Use
+break <location> b <location> Set a breakpoint on a function name, line
+number, or line. Examples of locations
+are main, 5, and sortbug.c:42.
+info breakpoints i b List breakpoints.
+delete breakpoint
+<N>
+d b <N> Delete breakpoint <N>.
+Running and stepping
+These are commands for controlling the execution of a program:
+Command Short-form
+command
+Use
+run r Load a fresh copy of the program into memory and start
+running it. This does not work for remote debug using gdbserver.
+continue c Continue execution from a breakpoint.
+Ctrl-C - Stop the program being debugged.
+step s Step one line of code, stepping into any function that is called.
+next n Step one line of code, stepping over a function call.
+finish - Run until the current function returns.
+Debugging with GDB
+[ 366 ]
+Getting information
+These are commands for getting information about the debugger:
+Command Short-form
+command
+Use
+backtrace bt List the call stack
+info threads i th Display information about the threads
+executing in the program
+info sharedlibrary i share Display information about shared libraries
+currently loaded by the program
+print <variable> p <variable> Print the value of a variable, for example
+print foo
+list l List lines of code around the current program
+counter
+Running to a breakpoint
+Gdbserver loads the program into memory and sets a breakpoint at the first instruction,
+then waits for a connection from GDB. When the connection is made, you enter into a
+debug session. However, you will find that if you try to single-step immediately, you will
+get this message:
+Cannot find bounds of current function
+This is because the program has been halted in code written in assembly which creates the
+runtime environment for C and C++ programs. The first line of C or C++ code is the main()
+function. Supposing that you want to stop at main(), you would set a breakpoint there and
+then use the continue command (abbreviation c) to tell gdbserver to continue from the
+breakpoint at the start of the program and stop at main():
+(gdb) break main
+Breakpoint 1, main (argc=1, argv=0xbefffe24) at helloworld.c:8
+printf("Hello, world!\n");
+(gdb) c
+At this point, you may see the following:
+Reading /lib/ld-linux.so.3 from remote target...
+warning: File transfers from remote targets can be slow. Use "set sysroot"
+to access files locally instead.
+Debugging with GDB
+[ 367 ]
+With older versions of GDB, you may instead see this:
+warning: Could not load shared library symbols for 2 libraries, e.g.
+/lib/libc.so.6.
+In both cases, the problem is that you have forgotten to set the sysroot! Take another look
+at the earlier section on sysroot.
+This is all very different to starting a program natively, where you just type run. In fact, if
+you try typing run in a remote debug session, you will either see a message saying that the
+remote target does not support the run command, or in older versions of GDB, it will just
+hang without any explanation.
+Native debugging
+Running a native copy of GDB on the target is not as common as doing it remotely, but it is
+possible. As well as installing GDB in the target image, you will also need unstripped copies
+of the executables you want to debug and the corresponding source code installed in the
+target image. Both the Yocto Project and Buildroot allow you to do this.
+While native debugging is not a common activity for embedded
+developers, running profile and trace tools on the target is very common.
+These tools usually work best if you have unstripped binaries and source
+code on the target, which is half of the story I am telling here. I will return
+to the topic in the next chapter.
+The Yocto Project
+To begin with, you need to add gdb to the target image by adding this to
+conf/local.conf:
+IMAGE_INSTALL_append = " gdb"
+Next, you need the debug information for the packages you want to debug. The Yocto
+Project builds debug variants of packages, which contain unstripped binaries and the
+source code. You can add these debug packages selectively to your target image by adding
+<package name>-dbg to your conf/local.conf. Alternatively, you can simply install all
+debug packages by adding dbg-pkgs to EXTRA_IMAGE_FEATURES. Be warned that this will
+increase the size of the target image dramatically, perhaps by several hundreds of
+megabytes.
+EXTRA_IMAGE_FEATURES = "dbg-pkgs"
+Debugging with GDB
+[ 368 ]
+The source code is installed into /usr/src/debug/<package name> in the target image.
+This means that GDB will pick it up without needing to run set substitute-path. If you
+don't need the source, you can prevent it from being installed by adding this to your
+conf/local.conf file:
+PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
+Buildroot
+With Buildroot, you can tell it to install a native copy of GDB in the target image by
+enabling this option:
+BR2_PACKAGE_GDB_DEBUGGER in Target packages | Debugging, profiling and
+benchmark | Full debugger
+Then, to build binaries with debug information and to install them in the target image
+without stripping, enable these two options:
+BR2_ENABLE_DEBUG in Build options | Build packages with debugging
+symbols
+BR2_STRIP_none in Build options | Strip command for binaries on target
+Just-in-time debugging
+Sometimes a program will start to misbehave after it has been running for a while, and you
+would like to know what it is doing. The GDB attach feature does exactly this. I call it justin-
+time debugging. It is available with both native and remote debug sessions.
+In the case of remote debugging, you need to find the PID of the process to be debugged
+and pass it to gdbserver with the --attach option. For example, if the PID is 109, you
+would type this:
+# gdbserver --attach :10000 109
+Attached; pid = 109
+Listening on port 10000
+Debugging with GDB
+[ 369 ]
+This forces the process to stop as if it were at a breakpoint, allowing you to start your cross
+GDB in the normal way and connect to gdbserver. When you are done, you can detach,
+allowing the program to continue running without the debugger:
+(gdb) detach
+Detaching from program: /home/chris/MELP/helloworld/helloworld, process 109
+Ending remote debugging.
+Debugging forks and threads
+What happens when the program you are debugging forks? Does the debug session follow
+the parent process or the child? This behavior is controlled by follow-fork-mode, which
+may be parent or child, with parent being the default. Unfortunately, current versions of
+gdbserver do not support this option, so it only works for native debugging. If you really
+need to debug the child process while using gdbserver, a workaround is to modify the code
+so that the child loops on a variable immediately after the fork, giving you the opportunity
+to attach a new gdbserver session to it and then to set the variable so that it drops out of the
+loop.
+When a thread in a multi-threaded process hits a breakpoint, the default behavior is for all
+threads to halt. In most cases, this is the best thing to do as it allows you to look at static
+variables without them being changed by the other threads. When you recommence
+execution of the thread, all the stopped threads start up, even if you are single-stepping,
+and it is especially this last case that can cause problems. There is a way to modify the way
+in which GDB handles stopped threads, through a parameter called scheduler-locking.
+Normally it is off, but if you set it to on, only the thread that was stopped at the breakpoint
+is resumed and the others remain stopped, giving you a chance to see what the thread alone
+does without interference. This continues to be the case until you turn schedulerlocking
+off. Gdbserver supports this feature.
+Core files
+Core files capture the state of a failing program at the point that it terminates. You don't
+even have to be in the room with a debugger when the bug manifests itself. So, when you
+see Segmentation fault (core dumped), don't shrug; investigate the core file and
+extract the goldmine of information in there.
+Debugging with GDB
+[ 370 ]
+The first observation is that core files are not created by default, but only when the core file
+resource limit for the process is non-zero. You can change it for the current shell using
+ulimit -c. To remove all limits on the size of core files, type the following command:
+$ ulimit -c unlimited
+By default, the core file is named core and is placed in the current working directory of the
+process, which is the one pointed to by /proc/<PID>/cwd. There are a number of problems
+with this scheme. Firstly, when looking at a device with several files named core, it is not
+obvious which program generated each one. Secondly, the current working directory of the
+process may well be in a read-only filesystem, there may not be enough space to store the
+core file, or the process may not have permissions to write to the current working directory.
+There are two files that control the naming and placement of core files. The first is
+/proc/sys/kernel/core_uses_pid. Writing a 1 to it causes the PID number of the dying
+process to be appended to the filename, which is somewhat useful as long as you can
+associate the PID number with a program name from log files.
+Much more useful is /proc/sys/kernel/core_pattern, which gives you a lot more
+control over core files. The default pattern is core, but you can change it to a pattern
+composed of these meta characters:
+%p: The PID
+%u: The real UID of the dumped process
+%g: The real GID of the dumped process
+%s: The number of the signal causing the dump
+%t: The time of dump, expressed as seconds since the Epoch, 1970-01-01 00:00:00
++0000 (UTC)
+%h: The hostname
+%e: The executable filename
+%E: The path name of the executable, with slashes (/) replaced by exclamation
+marks (!)
+%c: The core file size soft resource limit of the dumped process
+You can also use a pattern that begins with an absolute directory name so that all core files
+are gathered together in one place. As an example, the following pattern puts all core files
+into the directory /corefiles and names them with the program name and the time of the
+crash:
+# echo /corefiles/core.%e.%t > /proc/sys/kernel/core_pattern
+Debugging with GDB
+[ 371 ]
+Following a core dump, you would find something like this:
+# ls /corefiles
+core.sort-debug.1431425613
+For more information, refer to the manual page core(5).
+Using GDB to look at core files
+Here is a sample GDB session looking at a core file:
+$ arm-poky-linux-gnueabi-gdb sort-debug
+/home/chris/rootfs/corefiles/core.sort-debug.1431425613
+[...]
+Core was generated by `./sort-debug'.
+Program terminated with signal SIGSEGV, Segmentation fault.
+#0 0x000085c8 in addtree (p=0x0, w=0xbeac4c60 "the") at sort-debug.c:41
+41 p->word = strdup (w);
+That shows that the program stopped at line 41. The list command shows the code in the
+vicinity:
+(gdb) list
+37 static struct tnode *addtree (struct tnode *p, char *w)
+38 {
+39 int cond;
+40
+41 p->word = strdup (w);
+42 p->count = 1;
+43 p->left = NULL;
+44 p->right = NULL;
+45
+The backtrace command (shortened to bt) shows how we got to this point:
+(gdb) bt
+#0 0x000085c8 in addtree (p=0x0, w=0xbeac4c60 "the") at sort-debug.c:41
+#1 0x00008798 in main (argc=1, argv=0xbeac4e24) at sort-debug.c:89
+An obvious mistake: addtree() was called with a null pointer.
+Debugging with GDB
+[ 372 ]
+GDB user interfaces
+GDB is controlled at a low level through the GDB machine interface, GDB/MI, which can be
+used to wrap GDB in a user interface or as part of a larger program, and it considerably
+extends the range of options available to you.
+In this section, I will describe three that are well suited to debugging embedded targets: the
+Terminal user interface, TUI; the data display debugger, DDD; and the Eclipse Cdevelopment
+Toolkit (CDT).
