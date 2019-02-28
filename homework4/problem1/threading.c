@@ -270,7 +270,7 @@ void *timer(void *threadp)
 	trigger.it_value.tv_sec = 2;
 	trigger.it_interval.tv_sec = 2;
 	
-	timer_settime(timeout, 0, &trigger, NULL);
+	//timer_settime(timeout, 0, &trigger, NULL);
 		
 	while(1)
 	{

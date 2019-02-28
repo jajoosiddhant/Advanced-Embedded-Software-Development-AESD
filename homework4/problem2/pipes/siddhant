@@ -1,0 +1,176 @@
+
+Parent PID Number = 2061.
+Writing Data to Pipe 1.
+IPC Method used is PIPES.
+
+Timestamp =  1551388662 seconds and 853366 microseconds.
+Sending :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853376 microseconds.
+Sending :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853386 microseconds.
+Sending :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853395 microseconds.
+Sending :
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853404 microseconds.
+Sending :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853414 microseconds.
+Sending :
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853423 microseconds.
+Sending :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853433 microseconds.
+Sending :
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853442 microseconds.
+Sending :
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853451 microseconds.
+Sending :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Child PID Number = 0.
+Reading from pipe 1.
+IPC Method used is PIPES.
+
+Timestamp =  1551388662 seconds and 853481 microseconds.
+Receiving :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853504 microseconds.
+Receiving :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853525 microseconds.
+Receiving :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853573 microseconds.
+Receiving :
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853599 microseconds.
+Receiving :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853628 microseconds.
+Receiving :
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853655 microseconds.
+Receiving :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853677 microseconds.
+Receiving :
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853699 microseconds.
+Receiving :
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853721 microseconds.
+Receiving :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Child PID Number = 0.
+Writing to pipe 2.
+IPC Method used is PIPES.
+
+Timestamp =  1551388662 seconds and 853777 microseconds.
+Sending :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853787 microseconds.
+Sending :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853796 microseconds.
+Sending :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853806 microseconds.
+Sending :
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853815 microseconds.
+Sending :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853824 microseconds.
+Sending :
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853834 microseconds.
+Sending :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853843 microseconds.
+Sending :
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853852 microseconds.
+Sending :
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853862 microseconds.
+Sending :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Parent PID Number = 2061.
+Reading Data from Pipe 2.
+IPC Method used is PIPES.
+
+Timestamp =  1551388662 seconds and 853451 microseconds
+Receiving :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853451 microseconds
+Receiving :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853451 microseconds
+Receiving :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853451 microseconds
+Receiving :
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853451 microseconds
+Receiving :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853451 microseconds
+Receiving :
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853451 microseconds
+Receiving :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853451 microseconds
+Receiving :
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853451 microseconds
+Receiving :
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 1.
+
+Timestamp =  1551388662 seconds and 853451 microseconds
+Receiving :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 1.
