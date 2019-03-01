@@ -34,17 +34,24 @@ char *arr[ELEMENTS] = {"Hello","World","Colorado","Boulder","University of Color
 pid_t process_pid;
 pid_t gchild_pid;
 pthread_mutex_t mute;
+static int flag;
 
 //Function Declarations
 void random_generator();
+void sig_init();
+void signal_handler(int signo, siginfo_t *info, void *extra);
 
 int main(int argc, char *argv[])
 {		
 	
-	if(ELEMENTS == 0)
+	if(ELEMENTS <= 0)
 	{
 		printf("ERROR : Number of Elements in the array cannot be zero");
+		exit(EXIT_FAILURE);
 	}
+	
+	sig_init();
+	srand(time(0));
 	
 	if(pthread_mutex_init(&mute,NULL))
 	{
@@ -194,9 +201,10 @@ int main(int argc, char *argv[])
 			exit(EXIT_FAILURE);
 		}
 	
+		gchild_pid = getpid();
 		printf("\nChild PID Number = %d\n", gchild_pid);
 		printf("Reading from pipe 1\n");
-		fprintf(datafile1,"\nChild PID Number = %d.\n", gchild_pid);
+		fprintf(datafile1,"\nChild PID Number = %d.\n",gchild_pid);
 		fprintf(datafile1,"Reading from pipe 1.\n");
 		fprintf(datafile1, "IPC Method used is PIPES.\n");
 		
@@ -270,6 +278,22 @@ int main(int argc, char *argv[])
 		perror("ERROR : pthread_mutex_destroy, cannot destroy");
 		exit(EXIT_FAILURE);
 	}
+	
+	while(!flag)
+	{
+		
+	}
+	
+	FILE *datafile2;
+	pthread_mutex_lock(&mute);
+	datafile2 = fopen(argv[1], "a");
+	if (datafile2 == NULL)
+	{
+		perror("ERROR : fopen(), File not created.");
+		exit(EXIT_FAILURE);
+	}
+	fprintf(datafile2,"\nSIGTERM Interrupted.\n");
+	pthread_mutex_unlock(&mute);
 	
 	return 0;
 }
@@ -351,4 +375,43 @@ void random_generator()
 
 	}
 
+}
+
+/*
+ * Signal Initialization Function.
+ */
+
+void sig_init()
+{
+	struct sigaction send_sig;
+	send_sig.sa_flags = SA_SIGINFO;
+	send_sig.sa_sigaction = &signal_handler;
+	if(sigaction(SIGUSR1, &send_sig, NULL))
+	{
+		perror("sigaction()\n");
+		exit(EXIT_FAILURE);
+	}
+}
+
+
+/*
+ * Function called on Signal Interruption.
+ * Checks which signal has interrupted the program.
+ */
+void signal_handler(int signo, siginfo_t *info, void *extra)
+{
+	if(signo == 15)
+	{
+	printf("Signal SIGTERM Interrupted\n");
+	flag = 1;
+	}
+	
+	
+	printf("Exit\n");
+
+	//if(pthread_cancel(timer_thread))
+	//{
+		//printf("ERROR: pthread_cancel.\n");
+		//exit(EXIT_FAILURE);
+	//}
 }

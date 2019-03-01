@@ -1,5 +1,5 @@
 CC=~/APES/build/buildroot/output/host/usr/bin/arm-linux-gcc
-CC=gcc
+#CC=gcc
 CFLAGS=-g
 LIBS=-lpthread
 TARGET=pipes

@@ -1,0 +1,958 @@
+
+Timestamp = 1551416143 seconds and 863139 microseconds
+I am the parent Thread with PID: 226.
+
+Timestamp = 1551416143 seconds and 867308 microseconds
+
+Child Thread 2 has been created with PID: 226 	 Linux Thread ID: 228 	 POSIX Thread ID: -1228450608.
+
+Timestamp = 1551416143 seconds and 870555 microseconds
+
+Child Thread 1 has been created with PID: 226 	 Linux Thread ID: 227 	 POSIX Thread ID: -1226353456.
+Sorting letters in the text file output......
+Printing letters whose count is less than 100:
+=>LETTER = j 	 COUNT = 26
+=>LETTER = q 	 COUNT = 4
+=>LETTER = x 	 COUNT = 84
+=>LETTER = z 	 COUNT = 12
+Thread 1 Work.
+
+Timestamp = 1551416143 seconds and 970797 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 230 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  127 0 398 70501 49 0 272 0 0 0
+cpu0 127 0 398 70501 49 0 272 0 0 0
+
+
+Timestamp = 1551416144 seconds and 70848 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 234 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  127 0 400 70508 49 0 273 0 0 0
+cpu0 127 0 400 70508 49 0 273 0 0 0
+
+
+Timestamp = 1551416144 seconds and 170820 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 238 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  128 0 402 70515 49 0 273 0 0 0
+cpu0 128 0 402 70515 49 0 273 0 0 0
+
+
+Timestamp = 1551416144 seconds and 270825 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 242 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  129 0 404 70522 49 0 273 0 0 0
+cpu0 129 0 404 70522 49 0 273 0 0 0
+
+
+Timestamp = 1551416144 seconds and 370841 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 246 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  130 0 406 70529 49 0 273 0 0 0
+cpu0 130 0 406 70529 49 0 273 0 0 0
+
+
+Timestamp = 1551416144 seconds and 470824 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 250 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  132 0 407 70536 49 0 273 0 0 0
+cpu0 132 0 407 70536 49 0 273 0 0 0
+
+
+Timestamp = 1551416144 seconds and 570825 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 254 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  133 0 409 70543 49 0 273 0 0 0
+cpu0 133 0 409 70543 49 0 273 0 0 0
+
+
+Timestamp = 1551416144 seconds and 670815 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 258 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  134 0 411 70550 49 0 273 0 0 0
+cpu0 134 0 411 70550 49 0 273 0 0 0
+
+
+Timestamp = 1551416144 seconds and 770810 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 262 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  135 0 412 70557 49 0 274 0 0 0
+cpu0 135 0 412 70557 49 0 274 0 0 0
+
+
+Timestamp = 1551416144 seconds and 870826 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 266 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  136 0 414 70563 49 0 274 0 0 0
+cpu0 136 0 414 70563 49 0 274 0 0 0
+
+
+Timestamp = 1551416144 seconds and 970844 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 270 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  136 0 417 70570 49 0 274 0 0 0
+cpu0 136 0 417 70570 49 0 274 0 0 0
+
+
+Timestamp = 1551416145 seconds and 70846 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 274 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  136 0 420 70577 49 0 274 0 0 0
+cpu0 136 0 420 70577 49 0 274 0 0 0
+
+
+Timestamp = 1551416145 seconds and 170824 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 278 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  136 0 423 70584 49 0 274 0 0 0
+cpu0 136 0 423 70584 49 0 274 0 0 0
+
+
+Timestamp = 1551416145 seconds and 270827 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 282 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  136 0 425 70591 49 0 275 0 0 0
+cpu0 136 0 425 70591 49 0 275 0 0 0
+
+
+Timestamp = 1551416145 seconds and 370811 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 286 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  137 0 427 70598 49 0 275 0 0 0
+cpu0 137 0 427 70598 49 0 275 0 0 0
+
+
+Timestamp = 1551416145 seconds and 470827 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 290 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  139 0 428 70605 49 0 275 0 0 0
+cpu0 139 0 428 70605 49 0 275 0 0 0
+
+
+Timestamp = 1551416145 seconds and 570827 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 294 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  140 0 430 70612 49 0 275 0 0 0
+cpu0 140 0 430 70612 49 0 275 0 0 0
+
+
+Timestamp = 1551416145 seconds and 670851 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 298 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  140 0 433 70619 49 0 275 0 0 0
+cpu0 140 0 433 70619 49 0 275 0 0 0
+
+
+Timestamp = 1551416145 seconds and 770854 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 302 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  140 0 436 70626 49 0 275 0 0 0
+cpu0 140 0 436 70626 49 0 275 0 0 0
+
+
+Timestamp = 1551416145 seconds and 870803 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 306 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  140 0 438 70632 49 0 276 0 0 0
+cpu0 140 0 438 70632 49 0 276 0 0 0
+
+
+Timestamp = 1551416145 seconds and 970831 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 310 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  141 0 440 70639 49 0 276 0 0 0
+cpu0 141 0 440 70639 49 0 276 0 0 0
+
+
+Timestamp = 1551416146 seconds and 70830 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 314 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  142 0 442 70646 49 0 276 0 0 0
+cpu0 142 0 442 70646 49 0 276 0 0 0
+
+
+Timestamp = 1551416146 seconds and 170827 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 318 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  142 0 445 70653 49 0 276 0 0 0
+cpu0 142 0 445 70653 49 0 276 0 0 0
+
+
+Timestamp = 1551416146 seconds and 270827 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 322 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  143 0 447 70660 49 0 276 0 0 0
+cpu0 143 0 447 70660 49 0 276 0 0 0
+
+
+Timestamp = 1551416146 seconds and 370859 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 326 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  143 0 450 70667 49 0 276 0 0 0
+cpu0 143 0 450 70667 49 0 276 0 0 0
+
+
+Timestamp = 1551416146 seconds and 470827 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 330 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  144 0 452 70674 49 0 276 0 0 0
+cpu0 144 0 452 70674 49 0 276 0 0 0
+
+
+Timestamp = 1551416146 seconds and 570831 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 334 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  144 0 455 70681 49 0 276 0 0 0
+cpu0 144 0 455 70681 49 0 276 0 0 0
+
+
+Timestamp = 1551416146 seconds and 670815 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 338 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  144 0 458 70688 49 0 276 0 0 0
+cpu0 144 0 458 70688 49 0 276 0 0 0
+
+
+Timestamp = 1551416146 seconds and 770847 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 342 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  145 0 460 70694 49 0 276 0 0 0
+cpu0 145 0 460 70694 49 0 276 0 0 0
+
+
+Timestamp = 1551416146 seconds and 870850 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 346 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  147 0 461 70701 49 0 276 0 0 0
+cpu0 147 0 461 70701 49 0 276 0 0 0
+
+
+Timestamp = 1551416146 seconds and 970818 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 350 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  148 0 463 70708 49 0 276 0 0 0
+cpu0 148 0 463 70708 49 0 276 0 0 0
+
+
+Timestamp = 1551416147 seconds and 70864 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 354 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  148 0 466 70716 49 0 276 0 0 0
+cpu0 148 0 466 70716 49 0 276 0 0 0
+
+
+Timestamp = 1551416147 seconds and 170840 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 358 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  149 0 468 70723 49 0 276 0 0 0
+cpu0 149 0 468 70723 49 0 276 0 0 0
+
+
+Timestamp = 1551416147 seconds and 270874 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 362 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  149 0 470 70730 49 0 277 0 0 0
+cpu0 149 0 470 70730 49 0 277 0 0 0
+
+
+Timestamp = 1551416147 seconds and 370826 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 366 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  149 0 473 70736 49 0 277 0 0 0
+cpu0 149 0 473 70736 49 0 277 0 0 0
+
+
+Timestamp = 1551416147 seconds and 470823 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 370 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  149 0 476 70743 49 0 277 0 0 0
+cpu0 149 0 476 70743 49 0 277 0 0 0
+
+
+Timestamp = 1551416147 seconds and 570869 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 374 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  149 0 479 70750 49 0 277 0 0 0
+cpu0 149 0 479 70750 49 0 277 0 0 0
+
+
+Timestamp = 1551416147 seconds and 670860 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 378 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  149 0 482 70757 49 0 277 0 0 0
+cpu0 149 0 482 70757 49 0 277 0 0 0
+
+
+Timestamp = 1551416147 seconds and 770870 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 382 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  149 0 485 70764 49 0 277 0 0 0
+cpu0 149 0 485 70764 49 0 277 0 0 0
+
+
+Timestamp = 1551416147 seconds and 870861 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 386 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  149 0 488 70771 49 0 277 0 0 0
+cpu0 149 0 488 70771 49 0 277 0 0 0
+
+
+Timestamp = 1551416147 seconds and 970820 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 390 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  150 0 490 70778 49 0 277 0 0 0
+cpu0 150 0 490 70778 49 0 277 0 0 0
+
+
+Timestamp = 1551416148 seconds and 70829 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 394 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  150 0 493 70785 49 0 277 0 0 0
+cpu0 150 0 493 70785 49 0 277 0 0 0
+
+
+Timestamp = 1551416148 seconds and 170858 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 398 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  151 0 495 70792 49 0 277 0 0 0
+cpu0 151 0 495 70792 49 0 277 0 0 0
+
+
+Timestamp = 1551416148 seconds and 270824 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 402 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  151 0 498 70798 49 0 277 0 0 0
+cpu0 151 0 498 70798 49 0 277 0 0 0
+
+
+Timestamp = 1551416148 seconds and 370858 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 406 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  152 0 500 70805 49 0 277 0 0 0
+cpu0 152 0 500 70805 49 0 277 0 0 0
+
+
+Timestamp = 1551416148 seconds and 470814 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 410 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  153 0 502 70812 49 0 277 0 0 0
+cpu0 153 0 502 70812 49 0 277 0 0 0
+
+
+Timestamp = 1551416148 seconds and 570840 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 414 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  154 0 504 70819 49 0 277 0 0 0
+cpu0 154 0 504 70819 49 0 277 0 0 0
+
+
+Timestamp = 1551416148 seconds and 670827 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 418 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  155 0 506 70826 49 0 277 0 0 0
+cpu0 155 0 506 70826 49 0 277 0 0 0
+
+
+Timestamp = 1551416148 seconds and 770832 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 422 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  155 0 509 70833 49 0 277 0 0 0
+cpu0 155 0 509 70833 49 0 277 0 0 0
+
+
+Timestamp = 1551416148 seconds and 870849 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 426 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  155 0 512 70840 49 0 277 0 0 0
+cpu0 155 0 512 70840 49 0 277 0 0 0
+
+
+Timestamp = 1551416148 seconds and 970826 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 430 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  156 0 514 70846 49 0 278 0 0 0
+cpu0 156 0 514 70846 49 0 278 0 0 0
+
+
+Timestamp = 1551416149 seconds and 70817 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 434 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  156 0 517 70853 49 0 278 0 0 0
+cpu0 156 0 517 70853 49 0 278 0 0 0
+
+
+Timestamp = 1551416149 seconds and 170839 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 438 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  156 0 520 70860 49 0 278 0 0 0
+cpu0 156 0 520 70860 49 0 278 0 0 0
+
+
+Timestamp = 1551416149 seconds and 270827 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 442 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  157 0 522 70868 49 0 278 0 0 0
+cpu0 157 0 522 70868 49 0 278 0 0 0
+
+
+Timestamp = 1551416149 seconds and 370851 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 446 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  157 0 525 70875 49 0 278 0 0 0
+cpu0 157 0 525 70875 49 0 278 0 0 0
+
+
+Timestamp = 1551416149 seconds and 470821 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 450 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  157 0 528 70882 49 0 278 0 0 0
+cpu0 157 0 528 70882 49 0 278 0 0 0
+
+
+Timestamp = 1551416149 seconds and 570834 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 454 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  157 0 531 70889 49 0 278 0 0 0
+cpu0 157 0 531 70889 49 0 278 0 0 0
+
+
+Timestamp = 1551416149 seconds and 670843 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 458 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  157 0 534 70896 49 0 278 0 0 0
+cpu0 157 0 534 70896 49 0 278 0 0 0
+
+
+Timestamp = 1551416149 seconds and 770847 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 462 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  158 0 536 70903 49 0 278 0 0 0
+cpu0 158 0 536 70903 49 0 278 0 0 0
+
+
+Timestamp = 1551416149 seconds and 870910 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 466 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  158 0 539 70910 49 0 278 0 0 0
+cpu0 158 0 539 70910 49 0 278 0 0 0
+
+
+Timestamp = 1551416149 seconds and 970810 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 470 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  158 0 542 70917 49 0 278 0 0 0
+cpu0 158 0 542 70917 49 0 278 0 0 0
+
+
+Timestamp = 1551416150 seconds and 70820 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 474 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  159 0 543 70924 49 0 279 0 0 0
+cpu0 159 0 543 70924 49 0 279 0 0 0
+
+
+Timestamp = 1551416150 seconds and 170840 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 478 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  160 0 545 70931 49 0 279 0 0 0
+cpu0 160 0 545 70931 49 0 279 0 0 0
+
+
+Timestamp = 1551416150 seconds and 270833 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 482 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  160 0 548 70938 49 0 279 0 0 0
+cpu0 160 0 548 70938 49 0 279 0 0 0
+
+
+Timestamp = 1551416150 seconds and 370841 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 486 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  160 0 551 70945 49 0 279 0 0 0
+cpu0 160 0 551 70945 49 0 279 0 0 0
+
+
+Timestamp = 1551416150 seconds and 470828 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 490 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  160 0 554 70952 49 0 279 0 0 0
+cpu0 160 0 554 70952 49 0 279 0 0 0
+
+
+Timestamp = 1551416150 seconds and 570844 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 494 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  161 0 556 70959 49 0 279 0 0 0
+cpu0 161 0 556 70959 49 0 279 0 0 0
+
+
+Timestamp = 1551416150 seconds and 671102 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 498 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  163 0 557 70966 49 0 279 0 0 0
+cpu0 163 0 557 70966 49 0 279 0 0 0
+
+
+Timestamp = 1551416150 seconds and 770819 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 502 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  164 0 559 70973 49 0 279 0 0 0
+cpu0 164 0 559 70973 49 0 279 0 0 0
+
+
+Timestamp = 1551416150 seconds and 870816 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 506 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  164 0 562 70980 49 0 279 0 0 0
+cpu0 164 0 562 70980 49 0 279 0 0 0
+
+
+Timestamp = 1551416150 seconds and 970821 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 510 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  165 0 564 70987 49 0 279 0 0 0
+cpu0 165 0 564 70987 49 0 279 0 0 0
+
+
+Timestamp = 1551416151 seconds and 70844 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 514 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  166 0 566 70994 49 0 279 0 0 0
+cpu0 166 0 566 70994 49 0 279 0 0 0
+
+
+Timestamp = 1551416151 seconds and 170818 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 518 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  166 0 569 71001 49 0 279 0 0 0
+cpu0 166 0 569 71001 49 0 279 0 0 0
+
+
+Timestamp = 1551416151 seconds and 270824 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 522 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  166 0 571 71008 49 0 281 0 0 0
+cpu0 166 0 571 71008 49 0 281 0 0 0
+
+
+Timestamp = 1551416151 seconds and 370838 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 526 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  167 0 573 71014 49 0 281 0 0 0
+cpu0 167 0 573 71014 49 0 281 0 0 0
+
+
+Timestamp = 1551416151 seconds and 470824 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 530 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  167 0 576 71021 49 0 281 0 0 0
+cpu0 167 0 576 71021 49 0 281 0 0 0
+
+
+Timestamp = 1551416151 seconds and 570836 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 534 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  168 0 578 71028 49 0 281 0 0 0
+cpu0 168 0 578 71028 49 0 281 0 0 0
+
+
+Timestamp = 1551416151 seconds and 670986 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 538 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  168 0 581 71035 49 0 281 0 0 0
+cpu0 168 0 581 71035 49 0 281 0 0 0
+
+
+Timestamp = 1551416151 seconds and 770831 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 542 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  169 0 583 71042 49 0 281 0 0 0
+cpu0 169 0 583 71042 49 0 281 0 0 0
+
+
+Timestamp = 1551416151 seconds and 870826 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 546 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  170 0 585 71049 49 0 281 0 0 0
+cpu0 170 0 585 71049 49 0 281 0 0 0
+
+
+Timestamp = 1551416151 seconds and 970849 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 550 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  171 0 587 71056 49 0 281 0 0 0
+cpu0 171 0 587 71056 49 0 281 0 0 0
+
+
+Timestamp = 1551416152 seconds and 70841 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 554 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  171 0 590 71063 49 0 281 0 0 0
+cpu0 171 0 590 71063 49 0 281 0 0 0
+
+
+Timestamp = 1551416152 seconds and 170862 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 558 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  171 0 592 71070 49 0 282 0 0 0
+cpu0 171 0 592 71070 49 0 282 0 0 0
+
+
+Timestamp = 1551416152 seconds and 270824 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 562 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  171 0 595 71077 49 0 282 0 0 0
+cpu0 171 0 595 71077 49 0 282 0 0 0
+
+
+Timestamp = 1551416152 seconds and 370825 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 566 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  171 0 598 71083 49 0 282 0 0 0
+cpu0 171 0 598 71083 49 0 282 0 0 0
+
+
+Timestamp = 1551416152 seconds and 470828 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 570 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  171 0 599 71090 49 0 284 0 0 0
+cpu0 171 0 599 71090 49 0 284 0 0 0
+
+
+Timestamp = 1551416152 seconds and 570838 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 574 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  172 0 601 71097 49 0 284 0 0 0
+cpu0 172 0 601 71097 49 0 284 0 0 0
+
+
+Timestamp = 1551416152 seconds and 670825 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 578 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  173 0 603 71104 49 0 284 0 0 0
+cpu0 173 0 603 71104 49 0 284 0 0 0
+
+
+Timestamp = 1551416152 seconds and 770833 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 582 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  174 0 605 71111 49 0 284 0 0 0
+cpu0 174 0 605 71111 49 0 284 0 0 0
+
+
+Timestamp = 1551416152 seconds and 870849 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 586 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  176 0 606 71118 49 0 284 0 0 0
+cpu0 176 0 606 71118 49 0 284 0 0 0
+
+
+Timestamp = 1551416152 seconds and 970835 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 590 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  176 0 609 71125 49 0 284 0 0 0
+cpu0 176 0 609 71125 49 0 284 0 0 0
+
+
+Timestamp = 1551416153 seconds and 70815 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 594 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  177 0 611 71132 49 0 284 0 0 0
+cpu0 177 0 611 71132 49 0 284 0 0 0
+
+
+Timestamp = 1551416153 seconds and 170819 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 598 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  177 0 614 71139 49 0 284 0 0 0
+cpu0 177 0 614 71139 49 0 284 0 0 0
+
+
+Timestamp = 1551416153 seconds and 270819 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 602 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  177 0 617 71146 49 0 284 0 0 0
+cpu0 177 0 617 71146 49 0 284 0 0 0
+
+
+Timestamp = 1551416153 seconds and 370840 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 606 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  177 0 619 71153 49 0 285 0 0 0
+cpu0 177 0 619 71153 49 0 285 0 0 0
+
+
+Timestamp = 1551416153 seconds and 470993 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 610 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  177 0 622 71159 49 0 285 0 0 0
+cpu0 177 0 622 71159 49 0 285 0 0 0
+
+
+Timestamp = 1551416153 seconds and 570860 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 614 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  177 0 625 71166 49 0 285 0 0 0
+cpu0 177 0 625 71166 49 0 285 0 0 0
+
+
+Timestamp = 1551416153 seconds and 670852 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 618 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  177 0 628 71173 49 0 285 0 0 0
+cpu0 177 0 628 71173 49 0 285 0 0 0
+
+
+Timestamp = 1551416153 seconds and 770862 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 622 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  179 0 629 71180 49 0 285 0 0 0
+cpu0 179 0 629 71180 49 0 285 0 0 0
+
+
+Timestamp = 1551416153 seconds and 870815 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 626 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  179 0 632 71187 49 0 286 0 0 0
+cpu0 179 0 632 71187 49 0 286 0 0 0
+
+
+Timestamp = 1551416153 seconds and 970818 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 630 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  181 0 633 71194 49 0 286 0 0 0
+cpu0 181 0 633 71194 49 0 286 0 0 0
+
+
+Timestamp = 1551416154 seconds and 70833 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 634 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  182 0 635 71200 49 0 286 0 0 0
+cpu0 182 0 635 71200 49 0 286 0 0 0
+
+
+Timestamp = 1551416154 seconds and 170852 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 638 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  183 0 637 71207 49 0 286 0 0 0
+cpu0 183 0 637 71207 49 0 286 0 0 0
+
+
+Timestamp = 1551416154 seconds and 270838 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 642 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  185 0 638 71214 49 0 286 0 0 0
+cpu0 185 0 638 71214 49 0 286 0 0 0
+
+
+Timestamp = 1551416154 seconds and 370834 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 646 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  186 0 640 71221 49 0 286 0 0 0
+cpu0 186 0 640 71221 49 0 286 0 0 0
+
+
+Timestamp = 1551416154 seconds and 470830 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 650 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  186 0 643 71228 49 0 286 0 0 0
+cpu0 186 0 643 71228 49 0 286 0 0 0
+
+
+Timestamp = 1551416154 seconds and 570841 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 654 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  187 0 645 71235 49 0 286 0 0 0
+cpu0 187 0 645 71235 49 0 286 0 0 0
+
+
+Timestamp = 1551416154 seconds and 670976 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 658 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  187 0 648 71242 49 0 286 0 0 0
+cpu0 187 0 648 71242 49 0 286 0 0 0
+
+
+Timestamp = 1551416154 seconds and 770813 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 662 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  187 0 651 71248 49 0 286 0 0 0
+cpu0 187 0 651 71248 49 0 286 0 0 0
+
+
+Timestamp = 1551416154 seconds and 870824 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 666 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  187 0 654 71255 49 0 286 0 0 0
+cpu0 187 0 654 71255 49 0 286 0 0 0
+
+
+Timestamp = 1551416154 seconds and 970829 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 670 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  187 0 655 71262 49 0 288 0 0 0
+cpu0 187 0 655 71262 49 0 288 0 0 0
+
+
+Timestamp = 1551416155 seconds and 70845 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 674 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  187 0 658 71269 49 0 288 0 0 0
+cpu0 187 0 658 71269 49 0 288 0 0 0
+
+
+Timestamp = 1551416155 seconds and 170824 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 678 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  188 0 660 71276 49 0 288 0 0 0
+cpu0 188 0 660 71276 49 0 288 0 0 0
+
+
+Timestamp = 1551416155 seconds and 270821 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 682 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  189 0 662 71283 49 0 288 0 0 0
+cpu0 189 0 662 71283 49 0 288 0 0 0
+
+
+Timestamp = 1551416155 seconds and 370810 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 686 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  190 0 664 71290 49 0 288 0 0 0
+cpu0 190 0 664 71290 49 0 288 0 0 0
+
+
+Timestamp = 1551416155 seconds and 470820 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 690 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  190 0 667 71297 49 0 288 0 0 0
+cpu0 190 0 667 71297 49 0 288 0 0 0
+
+
+Timestamp = 1551416155 seconds and 570873 microseconds
+
+Child Thread 2 with PID: 226 	 Linux Thread ID: 694 	 POSIX Thread ID: -1226353456.
+Trying to Display CPU Utilization......
+cpu  190 0 670 71304 49 0 288 0 0 0
+cpu0 190 0 670 71304 49 0 288 0 0 0
+
+
+Timestamp = 1551416155 seconds and 610015 microseconds
+Signal USR1 Interrupted
+Exiting

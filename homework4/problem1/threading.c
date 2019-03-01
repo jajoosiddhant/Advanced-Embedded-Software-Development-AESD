@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 	
 	//Get Current Time
 	clock_gettime(CLOCK_REALTIME,&timestamp);
-	printf("\nTimestamp = %ld microseconds\n", timestamp.tv_nsec/NSEC_PER_MICROSEC);
+	printf("\nTimestamp = %ld seconds and %ld microseconds\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
 	
 	struct file file;			//Local struct object to pass as an argument
 	file.filename = argv[1];
@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
 	//mlock(mute);
 	pthread_mutex_lock(&mute);
 	wopen(&file);
-	fprintf(file.logfile,"\nTimestamp = %ld microseconds\n", timestamp.tv_nsec/NSEC_PER_MICROSEC);
+	fprintf(file.logfile,"\nTimestamp = %ld seconds and %ld microseconds\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
 	fprintf(file.logfile,"I am the parent Thread with PID: %d.\n", parent_pid);
 	file_close(&file);
 	//munlock(mute);
@@ -132,14 +132,14 @@ int main(int argc, char *argv[])
 	
 	
 	clock_gettime(CLOCK_REALTIME,&timestamp);
-	printf("\nTimestamp = %ld microseconds\n", timestamp.tv_nsec/NSEC_PER_MICROSEC);
+	printf("\nTimestamp = %ld seconds and %ld microseconds\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
 	printf("Exiting\n");
 	
 	
 	//mlock(mute);
 	pthread_mutex_lock(&mute);	
 	wopen(&file);
-	fprintf(file.logfile,"\nTimestamp = %ld microseconds\n", timestamp.tv_nsec/NSEC_PER_MICROSEC);
+	fprintf(file.logfile,"\nTimestamp = %ld seconds and %ld microseconds\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
 	if (flag == 1)
 	{
 		fprintf(file.logfile,"Signal USR1 Interrupted\n");
@@ -175,7 +175,7 @@ void *letter(void *threadp)
 {	
 	//Get current time
 	clock_gettime(CLOCK_REALTIME,&timestamp);
-	printf("\nTimestamp = %ld microseconds\n", timestamp.tv_nsec/NSEC_PER_MICROSEC);
+	printf("\nTimestamp = %ld seconds and %ld microseconds\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
 	
 	mask1();	
 	
@@ -193,8 +193,10 @@ void *letter(void *threadp)
 	//mlock(mute);
 	pthread_mutex_lock(&mute);	
 	ropen(FILE_READ, file);
-	while((c=fgetc((*file).logfile))!=EOF)
+	//while((c=fgetc((*file).logfile))!=EOF)
+	while(!feof((*file).logfile))	
 	{
+		c=fgetc((*file).logfile);
 		ascii = (uint8_t)tolower(c);
 		if(ALPHA_FIRST<=ascii<=ALPHA_LAST)
 		{
@@ -209,7 +211,7 @@ void *letter(void *threadp)
 	//mlock(mute);
 	pthread_mutex_lock(&mute);	
 	wopen(file);
-	fprintf((*file).logfile,"\nTimestamp = %ld microseconds\n", timestamp.tv_nsec/NSEC_PER_MICROSEC);
+	fprintf((*file).logfile,"\nTimestamp = %ld seconds and %ld microseconds\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
 	fprintf((*file).logfile,"\nChild Thread 1 has been created with PID: %d \t Linux Thread ID: %d \t POSIX Thread ID: %ld.\n", letter_pid, letter_tid, letter_posix_id);	
 	fprintf((*file).logfile,"Sorting letters in the text file %s......\n", (*file).filename);
 	fprintf((*file).logfile,"Printing letters whose count is less than 100:\n");
@@ -237,7 +239,7 @@ void *timer(void *threadp)
 {
 	//Get Current Time
 	clock_gettime(CLOCK_REALTIME,&timestamp);
-	printf("\nTimestamp = %ld microseconds\n", timestamp.tv_nsec/NSEC_PER_MICROSEC);
+	printf("\nTimestamp = %ld seconds and %ld microseconds\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
 
 	struct file* file = (struct file*)threadp;
 	
@@ -249,7 +251,7 @@ void *timer(void *threadp)
 	//mlock(mute);
 	pthread_mutex_lock(&mute);	
 	wopen(file);
-	fprintf((*file).logfile,"\nTimestamp = %ld microseconds\n", timestamp.tv_nsec/NSEC_PER_MICROSEC);
+	fprintf((*file).logfile,"\nTimestamp = %ld seconds and %ld microseconds\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
 	fprintf((*file).logfile,"\nChild Thread 2 has been created with PID: %d \t Linux Thread ID: %d \t POSIX Thread ID: %ld.\n", timer_pid, timer_tid, timer_posix_id);	
 	file_close(file);
 	//munlock(mute);
@@ -265,12 +267,12 @@ void *timer(void *threadp)
 	timer_create(CLOCK_REALTIME, &sev, &timeout);
 	
 	//Setting the first timer interval and the repeating timer interval
-	//trigger.it_value.tv_nsec = INTERVAL;
-	//trigger.it_interval.tv_nsec = INTERVAL;
-	trigger.it_value.tv_sec = 2;
-	trigger.it_interval.tv_sec = 2;
+	trigger.it_value.tv_nsec = INTERVAL;
+	trigger.it_interval.tv_nsec = INTERVAL;
+	//trigger.it_value.tv_sec = 2;
+	//trigger.it_interval.tv_sec = 2;
 	
-	//timer_settime(timeout, 0, &trigger, NULL);
+	timer_settime(timeout, 0, &trigger, NULL);
 		
 	while(1)
 	{
@@ -287,7 +289,7 @@ void timer_handler(union sigval sv)
 {
 	//Get Current Time
 	clock_gettime(CLOCK_REALTIME,&timestamp);
-	printf("\nTimestamp = %ld microseconds\n", timestamp.tv_nsec/NSEC_PER_MICROSEC);
+	printf("\nTimestamp = %ld seconds and %ld microseconds\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
 
 	struct file* file = sv.sival_ptr;
 	
@@ -319,7 +321,7 @@ void timer_handler(union sigval sv)
 	//mlock(mute);
 	pthread_mutex_lock(&mute);	
 	wopen(file);
-	fprintf((*file).logfile,"\nTimestamp = %ld microseconds\n", timestamp.tv_nsec/NSEC_PER_MICROSEC);
+	fprintf((*file).logfile,"\nTimestamp = %ld seconds and %ld microseconds\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
 	fprintf((*file).logfile,"\nChild Thread 2 with PID: %d \t Linux Thread ID: %d \t POSIX Thread ID: %ld.\n", timer_pid, timer_tid, timer_posix_id);
 	fprintf((*file).logfile,"Trying to Display CPU Utilization......\n");
 	fprintf((*file).logfile,"%s\n", buffer);

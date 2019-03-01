@@ -1,0 +1,132 @@
+
+Parent PID Number = 950.
+Writing Data to Pipe 1.
+IPC Method used is PIPES.
+
+Timestamp =  1551417800 seconds and 536729 microseconds.
+Sending :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 537349 microseconds.
+Sending :
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 537887 microseconds.
+Sending :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 538382 microseconds.
+Sending :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 538866 microseconds.
+Sending :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 539355 microseconds.
+Sending :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 540207 microseconds.
+Sending :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 543318 microseconds.
+Sending :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 543964 microseconds.
+Sending :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 544145 microseconds.
+Sending :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Child PID Number = 951.
+Reading from pipe 1.
+IPC Method used is PIPES.
+
+Timestamp =  1551417800 seconds and 546800 microseconds.
+Receiving :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 547212 microseconds.
+Receiving :
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 548221 microseconds.
+Receiving :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 548640 microseconds.
+Receiving :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 549362 microseconds.
+Receiving :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 550498 microseconds.
+Receiving :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 550918 microseconds.
+Receiving :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 551259 microseconds.
+Receiving :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 552344 microseconds.
+Receiving :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 552711 microseconds.
+Receiving :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Child PID Number = 951.
+Writing to pipe 2.
+IPC Method used is PIPES.
+
+Timestamp =  1551417800 seconds and 553820 microseconds.
+Sending :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 554019 microseconds.
+Sending :
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 554149 microseconds.
+Sending :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 554677 microseconds.
+Sending :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 554850 microseconds.
+Sending :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 554973 microseconds.
+Sending :
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 555088 microseconds.
+Sending :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 555200 microseconds.
+Sending :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 555670 microseconds.
+Sending :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Timestamp =  1551417800 seconds and 555833 microseconds.
+Sending :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 1.
