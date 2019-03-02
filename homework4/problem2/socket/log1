@@ -1,0 +1,83 @@
+
+PID Number = 218
+IPC Method used is Sockets.
+
+Timestamp =  1364 seconds and 31487 microseconds.
+Receiving:
+STRING =  	 LENGTH = 0 	 LED = 0.
+
+Timestamp =  1364 seconds and 31912 microseconds.
+Receiving:
+STRING = Bye World 	 LENGTH = 9 	 LED = 0.
+
+Timestamp =  1364 seconds and 32203 microseconds.
+Receiving:
+STRING = Captain Marvel 	 LENGTH = 14 	 LED = 0.
+
+Timestamp =  1364 seconds and 32483 microseconds.
+Receiving:
+STRING = Bye World 	 LENGTH = 9 	 LED = 0.
+
+Timestamp =  1364 seconds and 32753 microseconds.
+Receiving:
+STRING = Hello 	 LENGTH = 5 	 LED = 0.
+
+Timestamp =  1364 seconds and 33274 microseconds.
+Receiving:
+STRING = Hello 	 LENGTH = 5 	 LED = 0.
+
+Timestamp =  1364 seconds and 33578 microseconds.
+Receiving:
+STRING = Bye World 	 LENGTH = 9 	 LED = 0.
+
+Timestamp =  1364 seconds and 33855 microseconds.
+Receiving:
+STRING = Bye World 	 LENGTH = 9 	 LED = 0.
+
+Timestamp =  1364 seconds and 34119 microseconds.
+Receiving:
+STRING = Boulder 	 LENGTH = 7 	 LED = 0.
+
+Timestamp =  1364 seconds and 34376 microseconds.
+Receiving:
+STRING = Captain Marvel 	 LENGTH = 14 	 LED = 0.
+
+Timestamp =  1364 seconds and 34953 microseconds.
+Sending:
+STRING =  	 LENGTH = 0 	 LED = 1.
+
+Timestamp =  1364 seconds and 35037 microseconds.
+Sending:
+STRING = World 	 LENGTH = 5 	 LED = 0.
+
+Timestamp =  1364 seconds and 35067 microseconds.
+Sending:
+STRING = Colorado 	 LENGTH = 8 	 LED = 0.
+
+Timestamp =  1364 seconds and 35095 microseconds.
+Sending:
+STRING = Spider Man 	 LENGTH = 10 	 LED = 0.
+
+Timestamp =  1364 seconds and 35122 microseconds.
+Sending:
+STRING = Bye World 	 LENGTH = 9 	 LED = 0.
+
+Timestamp =  1364 seconds and 35148 microseconds.
+Sending:
+STRING = University of Colorado 	 LENGTH = 22 	 LED = 0.
+
+Timestamp =  1364 seconds and 35174 microseconds.
+Sending:
+STRING = University of Colorado 	 LENGTH = 22 	 LED = 1.
+
+Timestamp =  1364 seconds and 35200 microseconds.
+Sending:
+STRING = Bye World 	 LENGTH = 9 	 LED = 0.
+
+Timestamp =  1364 seconds and 35226 microseconds.
+Sending:
+STRING = Boulder 	 LENGTH = 7 	 LED = 0.
+
+Timestamp =  1364 seconds and 35252 microseconds.
+Sending:
+STRING = Bye World 	 LENGTH = 9 	 LED = 0.

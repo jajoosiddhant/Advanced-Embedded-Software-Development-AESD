@@ -1,0 +1,47 @@
+
+PID Number = 203
+IPC Method used is Shared Memory.
+
+Timestamp =  1219 seconds and 484391 microseconds.
+Sending:
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 0.
+
+Timestamp =  1219 seconds and 485766 microseconds.
+Sending:
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 0.
+
+Timestamp =  1219 seconds and 487258 microseconds.
+Sending:
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 0.
+
+Timestamp =  1219 seconds and 488542 microseconds.
+Sending:
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 0.
+
+Timestamp =  1219 seconds and 488834 microseconds.
+Sending:
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  1219 seconds and 489590 microseconds.
+Sending:
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Timestamp =  1219 seconds and 490518 microseconds.
+Sending:
+STRING = University of Colorado 	 STRING LENGTH = 22 	 LED STATUS = 0.
+
+Timestamp =  1219 seconds and 490791 microseconds.
+Sending:
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  1219 seconds and 491036 microseconds.
+Sending:
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  1219 seconds and 491719 microseconds.
+Sending:
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 0.
+
+SIGTERM Interrupted.
+
+Exiting.

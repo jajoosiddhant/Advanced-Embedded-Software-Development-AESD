@@ -34,7 +34,7 @@ char *arr[ELEMENTS] = {"Hello","World","Colorado","Boulder","University of Color
 pid_t process_pid;
 pid_t gchild_pid;
 pthread_mutex_t mute;
-static int flag;
+char *x;
 
 //Function Declarations
 void random_generator();
@@ -50,6 +50,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	
+	x=argv[1]; 
 	sig_init();
 	srand(time(0));
 	
@@ -115,9 +116,9 @@ int main(int argc, char *argv[])
 		fprintf(datafile, "IPC Method used is PIPES.\n");
 		
 		for (int i = 0; i<(ELEMENTS+2);i++)
-		{
+		{			printf("Before randommmm = %d\n\n", rs.LED);
 			random_generator();
-			printf("%d\n\n", rs.LED);
+			printf("After randommmm = %d\n\n", rs.LED);
 			int x = write(pone[1], &rs, sizeof(struct data));
 			if(x == -1)
 			{
@@ -271,7 +272,8 @@ int main(int argc, char *argv[])
 		fclose(datafile1);
 		pthread_mutex_unlock(&mute);
 		wait(NULL);
-	}	
+	}
+	
 	//Destroying Mutexes
 	if(pthread_mutex_destroy(&mute))
 	{
@@ -279,22 +281,10 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	
-	while(!flag)
-	{
+	//while(1)		//To check signal Interruption
+	//{}
+	
 		
-	}
-	
-	FILE *datafile2;
-	pthread_mutex_lock(&mute);
-	datafile2 = fopen(argv[1], "a");
-	if (datafile2 == NULL)
-	{
-		perror("ERROR : fopen(), File not created.");
-		exit(EXIT_FAILURE);
-	}
-	fprintf(datafile2,"\nSIGTERM Interrupted.\n");
-	pthread_mutex_unlock(&mute);
-	
 	return 0;
 }
 
@@ -312,6 +302,7 @@ void random_generator()
 			rs.info = arr[random];
 			rs.length = strlen(arr[random]);
 			rs.LED = OFF;
+			break;
 		}
 		
 		case 1:
@@ -319,6 +310,7 @@ void random_generator()
 			rs.info = arr[random];
 			rs.length = strlen(arr[random]);
 			rs.LED = OFF;
+			break;
 		}
 		
 		case 2:
@@ -326,6 +318,7 @@ void random_generator()
 			rs.info = arr[random];
 			rs.length = strlen(arr[random]);
 			rs.LED = OFF;
+			break;
 		}
 
 		case 3:
@@ -333,6 +326,7 @@ void random_generator()
 			rs.info = arr[random];
 			rs.length = strlen(arr[random]);
 			rs.LED = OFF;
+			break;
 		}
 
 		case 4:
@@ -340,6 +334,7 @@ void random_generator()
 			rs.info = arr[random];
 			rs.length = strlen(arr[random]);
 			rs.LED = OFF;
+			break;
 		}
 
 		case 5:
@@ -347,6 +342,7 @@ void random_generator()
 			rs.info = arr[random];
 			rs.length = strlen(arr[random]);
 			rs.LED = OFF;
+			break;
 		}
 
 		case 6:
@@ -354,6 +350,7 @@ void random_generator()
 			rs.info = arr[random];
 			rs.length = strlen(arr[random]);
 			rs.LED = OFF;
+			break;
 		}
 
 		case 7:
@@ -361,16 +358,19 @@ void random_generator()
 			rs.info = arr[random];
 			rs.length = strlen(arr[random]);
 			rs.LED = OFF;
+			break;
 		}
 
 		case 8:
 		{
 			rs.LED = OFF;
+			break;
 		}
 
 		case 9:
 		{
 			rs.LED = ON;
+			break;
 		}
 
 	}
@@ -386,7 +386,7 @@ void sig_init()
 	struct sigaction send_sig;
 	send_sig.sa_flags = SA_SIGINFO;
 	send_sig.sa_sigaction = &signal_handler;
-	if(sigaction(SIGUSR1, &send_sig, NULL))
+	if(sigaction(SIGINT, &send_sig, NULL))
 	{
 		perror("sigaction()\n");
 		exit(EXIT_FAILURE);
@@ -400,18 +400,30 @@ void sig_init()
  */
 void signal_handler(int signo, siginfo_t *info, void *extra)
 {
-	if(signo == 15)
-	{
-	printf("Signal SIGTERM Interrupted\n");
-	flag = 1;
-	}
 	
 	
 	printf("Exit\n");
+	FILE *datafile2;
+	pthread_mutex_lock(&mute);
+	datafile2 = fopen(x, "a");
+	if (datafile2 == NULL)
+	{
+		perror("ERROR : fopen(), File not created.");
+		exit(EXIT_FAILURE);
+	}
+	fprintf(datafile2,"\nSIGTERM Interrupted.\n");
+	fprintf(datafile2,"\nExiting.\n");
+	pthread_mutex_unlock(&mute);
+	fclose(datafile2);
 
-	//if(pthread_cancel(timer_thread))
-	//{
-		//printf("ERROR: pthread_cancel.\n");
-		//exit(EXIT_FAILURE);
-	//}
+	//Destroying Mutexes
+	if(pthread_mutex_destroy(&mute))
+	{
+		perror("ERROR : pthread_mutex_destroy, cannot destroy");
+		exit(EXIT_FAILURE);
+	}
+
+	exit(EXIT_FAILURE);
+
+		
 }

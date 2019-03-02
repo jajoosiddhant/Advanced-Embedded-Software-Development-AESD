@@ -1,0 +1,176 @@
+
+Parent PID Number = 278.
+Writing Data to Pipe 1.
+IPC Method used is PIPES.
+
+Timestamp =  2531 seconds and 748254 microseconds.
+Sending :
+STRING = University of Colorado 	 STRING LENGTH = 22 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 749401 microseconds.
+Sending :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 750706 microseconds.
+Sending :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 751684 microseconds.
+Sending :
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 752611 microseconds.
+Sending :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 753497 microseconds.
+Sending :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 754305 microseconds.
+Sending :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 756178 microseconds.
+Sending :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 756954 microseconds.
+Sending :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 757165 microseconds.
+Sending :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Child PID Number = 279.
+Reading from pipe 1.
+IPC Method used is PIPES.
+
+Timestamp =  2531 seconds and 759945 microseconds.
+Receiving :
+STRING = University of Colorado 	 STRING LENGTH = 22 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 761082 microseconds.
+Receiving :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 761459 microseconds.
+Receiving :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 762255 microseconds.
+Receiving :
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 762609 microseconds.
+Receiving :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 763228 microseconds.
+Receiving :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 764610 microseconds.
+Receiving :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 765361 microseconds.
+Receiving :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 766320 microseconds.
+Receiving :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 766738 microseconds.
+Receiving :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Child PID Number = 279.
+Writing to pipe 2.
+IPC Method used is PIPES.
+
+Timestamp =  2531 seconds and 768047 microseconds.
+Sending :
+STRING = University of Colorado 	 STRING LENGTH = 22 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 768252 microseconds.
+Sending :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 768380 microseconds.
+Sending :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 768496 microseconds.
+Sending :
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 768613 microseconds.
+Sending :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 768725 microseconds.
+Sending :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 769247 microseconds.
+Sending :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 769409 microseconds.
+Sending :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 769532 microseconds.
+Sending :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 769647 microseconds.
+Sending :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Parent PID Number = 278.
+Reading Data from Pipe 2.
+IPC Method used is PIPES.
+
+Timestamp =  2531 seconds and 757165 microseconds
+Receiving :
+STRING = University of Colorado 	 STRING LENGTH = 22 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 757165 microseconds
+Receiving :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 757165 microseconds
+Receiving :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 757165 microseconds
+Receiving :
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 757165 microseconds
+Receiving :
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 757165 microseconds
+Receiving :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 757165 microseconds
+Receiving :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 757165 microseconds
+Receiving :
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 757165 microseconds
+Receiving :
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 0.
+
+Timestamp =  2531 seconds and 757165 microseconds
+Receiving :
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 0.

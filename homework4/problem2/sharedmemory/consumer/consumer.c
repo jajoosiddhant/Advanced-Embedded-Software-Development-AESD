@@ -1,8 +1,8 @@
 
 /***************************************************
 /*
-* File Name: IPC using queues
-* Description: Sending data bidirectionally by creating 2 queues.  
+* File Name: IPC using shared memory
+* Description: Sending data bidirectionally using shared memory.  
 * Author: Siddhant Jajoo
 * Date: 02/28/2019
 /***************************************************/
@@ -17,10 +17,11 @@
 #include <sys/types.h>
 #include <wait.h>
 #include <pthread.h>
-#include <mqueue.h>
+#include <sys/shm.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-
+#include <sys/mman.h>
+#include <semaphore.h>
 
 #define ELEMENTS			(8)
 #define OFF					(0)
@@ -33,17 +34,19 @@ struct data
 	char info[25];
 	uint32_t length;
 	uint8_t LED;
-}rs;
+};
+struct data rs, rec;
+void *shared_mem;
+
 
 char *arr[ELEMENTS] = {"Hello","World","Colorado","Boulder","University of Colorado","Spider Man","Captain Marvel","Bye World"};
+const char *name = "/memory";
+const char *semname1 = "/sem1";
+const char *semname2 = "/sem2";
+
 pid_t process_pid;
-pid_t gchild_pid;
-pthread_mutex_t mute;
-static int flag;
-struct timespec timestamp;
-struct data rec;
-ssize_t res;
-mqd_t qid;
+sem_t *sem1;
+sem_t *sem2;
 char *x;
 
 //Function Declarations
@@ -54,127 +57,134 @@ void signal_handler(int signo, siginfo_t *info, void *extra);
 
 int main(int argc, char *argv[])
 {		
-	printf("Welcome\n");
+	
 	if(ELEMENTS <= 0)
 	{
 		printf("ERROR : Number of Elements in the array cannot be zero");
 		exit(EXIT_FAILURE);
 	}
-	
+	 
 	sig_init();
 	srand(time(0));
-	x = argv[1];
-
-	if(pthread_mutex_init(&mute,NULL))
-	{
-		perror("ERROR: pthread_mutex_init(), mutex not initialized");
-		exit(EXIT_FAILURE);
-	}
-	
-	char *filename = argv[1];
-	struct mq_attr attr;
-	
-	attr.mq_flags=0;
-	attr.mq_maxmsg=10;
-	attr.mq_msgsize=100;
-	attr.mq_curmsgs=0;
-	
-	pid_t parent_pid = getpid();
-	
-	
-	pthread_mutex_lock(&mute);
-	FILE *datafile1 = fopen(argv[1], "a");
-	if (datafile1 == NULL)
-	{
-		perror("ERROR : fopen(), File not created.\n");
-		exit(EXIT_FAILURE);
-	}
-	fprintf(datafile1,"\nPID Number = %d\n", parent_pid);
-	fclose(datafile1);
-	pthread_mutex_unlock(&mute);
-
-	
-	qid = mq_open("/ipc1", O_RDWR | O_CREAT, 0644, &attr);
-	
-	if(qid== -1)
-	{
-		perror("ERROR : mq_open()");
-		exit(EXIT_FAILURE);
-	}
-
-
-	//Reading queues
-	for (int i = 0; i<(ELEMENTS +2); i++)
-	{
+	process_pid = getpid();
+	x=argv[1];
 		
-		mq_receive(qid,(char *)&rec,100,NULL);
-		if (res == -1)
-		{
-			perror("ERROR : mq_receive.\n");
-		}
 		
-		pthread_mutex_lock(&mute);
-		FILE *datafile = fopen(argv[1], "a");
-		if (datafile == NULL)
-		{
-			perror("ERROR : fopen(), File not created.\n");
-			exit(EXIT_FAILURE);
-		}
+	struct timespec timestamp;
+	uint32_t shared_size;
+		
+	//file descriptor
+	int shm_consumer;
+	
+	sem1 = sem_open(semname1, O_EXCL, 0777, 0);
+	if(sem1 == NULL)
+	{
+		perror("ERROR : Semaphore not created.\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	sem2 = sem_open(semname2, O_EXCL, 0777, 0);
+	if(sem2 == NULL)
+	{
+		perror("ERROR : Semaphore not created.\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	//Open shared memory object
+	shm_consumer = shm_open(name,O_CREAT | O_RDWR, 0666);
+	if(shm_consumer<0)
+	{
+		perror("ERROR: shm_open");
+		exit(EXIT_FAILURE);
+	}
+	
+		
+	shared_size = sizeof(struct data) * (ELEMENTS+2);
+	
+	
+	//Truncate
+	ftruncate(shm_consumer, shared_size);
+	
+	shared_mem = mmap(0, shared_size, PROT_WRITE, MAP_SHARED, shm_consumer, 0);
+	if(shared_mem<0)
+	{
+		perror("ERROR : mmap().\n");
+		exit(EXIT_FAILURE);
+	}
+
+
+
+	//Read Data
+	sem_wait(sem1);
+	
+	FILE *datafile = fopen(argv[1], "a");
+	if (datafile == NULL)
+	{
+		perror("ERROR : fopen(), File not created");
+		exit(EXIT_FAILURE);
+	}	
+	fprintf(datafile,"\nPID Number = %d\n", process_pid);
+	fprintf(datafile,"IPC Method used is Shared Memory.\n");
+	for (int i = 0; i<(ELEMENTS+2); i++)
+	{	
+		memcpy((void *)&rec, shared_mem, sizeof(struct data));
+		shared_mem += sizeof(struct data);
+		printf("%s\n", rec.info);
+		printf("%d\n", rec.length);
+		printf("%d\n", rec.LED);
 		clock_gettime(CLOCK_REALTIME,&timestamp);
 		fprintf(datafile,"\nTimestamp =  %ld seconds and %ld microseconds.\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
-		fprintf(datafile,"Receiving :\n");
+		fprintf(datafile,"Receiving:\n");
 		fprintf(datafile,"STRING = %s \t STRING LENGTH = %d \t LED STATUS = %d.\n", rec.info, rec.length, rec.LED);		
-		fclose(datafile);
-		pthread_mutex_unlock(&mute);
-
-	}
-
-
-	//Writing Queues
-	
-	for (int k = 0; k<(ELEMENTS +2); k++)
-	{
 		
+	}
+	fclose(datafile);
+
+	
+	//To get the starting memory address of shared memory
+	shared_mem = mmap(0, shared_size, PROT_WRITE, MAP_SHARED, shm_consumer, 0);
+	if(shared_mem<0)
+	{
+		perror("ERROR : mmap().\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	//Write Data to shared Memory
+	
+	datafile = fopen(argv[1], "a");
+	if (datafile == NULL)
+	{
+		perror("ERROR : fopen(), File not created");
+		exit(EXIT_FAILURE);
+	}	
+	fprintf(datafile,"\nPID Number = %d\n", process_pid);
+	fprintf(datafile,"IPC Method used is Shared Memory.\n");
+	for (int k = 0; k<(ELEMENTS+2); k++)
+	{	
 		random_generator();
-		int s = mq_send(qid, (char*)&rs, sizeof(struct data), 0);
-		if (s == -1)
-		{
-		perror("ERROR : mq_send.\n");
-		}
-		sleep(1);
-		pthread_mutex_lock(&mute);
-		FILE *datafile = fopen(argv[1], "a");
-		if (datafile == NULL)
-		{
-			perror("ERROR : fopen(), File not created.\n");
-			exit(EXIT_FAILURE);
-		}
+		
+		memcpy((struct data *)shared_mem, &rs, sizeof(struct data));
+		shared_mem += sizeof(struct data);
+		
+		printf("%s\n", rs.info);
+		printf("%d\n", rs.length);
+		printf("%d\n", rs.LED);
 		clock_gettime(CLOCK_REALTIME,&timestamp);
 		fprintf(datafile,"\nTimestamp =  %ld seconds and %ld microseconds.\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
-		fprintf(datafile,"Sending :\n");
+		fprintf(datafile,"Sending:\n");
 		fprintf(datafile,"STRING = %s \t STRING LENGTH = %d \t LED STATUS = %d.\n", rs.info, rs.length, rs.LED);		
-		fclose(datafile);
-		pthread_mutex_unlock(&mute);
-	
+		
 	}
+	fclose(datafile);
 	
-	//Close queue
-	if(mq_close(qid))
-	{
-		perror("ERROR : mq_close()");
-		exit(EXIT_FAILURE);
-	}
+	sem_post(sem2);
 	
-	//Destroying Mutexes
-	if(pthread_mutex_destroy(&mute))
-	{
-		perror("ERROR : pthread_mutex_destroy, cannot destroy");
-		exit(EXIT_FAILURE);
-	}
+	//Unlink SHM
+	shm_unlink(name);
 	
-	//while(1){}		//Uncomment to Check Signal Interruption
 	return 0;
 }
+
 
 
 void random_generator()
@@ -289,7 +299,6 @@ void signal_handler(int signo, siginfo_t *info, void *extra)
 {
 	printf("Exit\n");
 	FILE *datafile2;
-	pthread_mutex_lock(&mute);
 	datafile2 = fopen(x, "a");
 	if (datafile2 == NULL)
 	{
@@ -297,31 +306,42 @@ void signal_handler(int signo, siginfo_t *info, void *extra)
 		exit(EXIT_FAILURE);
 	}
 	fprintf(datafile2,"\nSIGTERM Interrupted.\n");
-	fprintf(datafile2,"Exiting.\n");
-	pthread_mutex_unlock(&mute);
+	fprintf(datafile2,"\nExiting.\n");
 	fclose(datafile2);
-
-	//Unlink Queues	
-	if(mq_unlink("/ipc1"))
+	
+	//Unlink SHM
+	shm_unlink(name);
+	
+	//Unlink Semaphore 1
+	if(sem_unlink(semname1))
 	{
-		perror("ERROR : mq_unlink().\n");
+		perror("ERROR : Cannot Unlink Semaphore 1,\n");
 		exit(EXIT_FAILURE);
 	}
 	
-	//Closing Queue
-	if(mq_close(qid))
+	//Unlink Semaphore 2
+	if(sem_unlink(semname2))
 	{
-		perror("ERROR : mq_close()");
+		perror("ERROR : Cannot Unlink Semaphore 2,\n");
 		exit(EXIT_FAILURE);
 	}
 	
-	//Destroying Mutexes
-	if(pthread_mutex_destroy(&mute))
+	//Destroying Semaphore 1
+	if(sem_destroy(sem1))
 	{
-		perror("ERROR : pthread_mutex_destroy, cannot destroy");
+		perror("Cannot Destroy Semaphore 1.\n");
 		exit(EXIT_FAILURE);
 	}
 
+	//Destroying Semaphore 2
+	if(sem_destroy(sem2))
+	{
+		perror("Cannot Destroy Semaphore 2.\n");
+		exit(EXIT_FAILURE);
+	}
+
+	
 	exit(EXIT_FAILURE);
 
 }
+

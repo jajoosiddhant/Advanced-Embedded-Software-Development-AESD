@@ -1,8 +1,9 @@
 
 /***************************************************
 /*
-* File Name: IPC using queues
-* Description: Sending data bidirectionally by creating 2 queues.  
+* File Name: IPC using sockets
+* Description: Sending data bidirectionally by sockets.
+* Reference: www.it.uom.gr/teaching/distributedSite/dsldaLiu/labs/labs2_1/Sockets.html  
 * Author: Siddhant Jajoo
 * Date: 02/28/2019
 /***************************************************/
@@ -17,8 +18,9 @@
 #include <sys/types.h>
 #include <wait.h>
 #include <pthread.h>
-#include <mqueue.h>
-#include <fcntl.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <netinet/tcp.h>
 #include <sys/stat.h>
 
 
@@ -26,6 +28,7 @@
 #define OFF					(0)
 #define ON					(1)
 #define NSEC_PER_MICROSEC	(1000)	
+#define PORT				(8000)
 
 
 struct data
@@ -33,18 +36,14 @@ struct data
 	char info[25];
 	uint32_t length;
 	uint8_t LED;
-}rs;
+}rs, rec;
 
 char *arr[ELEMENTS] = {"Hello","World","Colorado","Boulder","University of Colorado","Spider Man","Captain Marvel","Bye World"};
 pid_t process_pid;
-pid_t gchild_pid;
 pthread_mutex_t mute;
-static int flag;
 struct timespec timestamp;
-struct data rec;
-ssize_t res;
-mqd_t qid;
 char *x;
+int soc, new_soc, client_len;
 
 //Function Declarations
 void random_generator();
@@ -57,31 +56,28 @@ int main(int argc, char *argv[])
 	printf("Welcome\n");
 	if(ELEMENTS <= 0)
 	{
-		printf("ERROR : Number of Elements in the array cannot be zero");
+		printf("ERROR : Number of Elements in the array cannot be zero.\n");
 		exit(EXIT_FAILURE);
 	}
 	
 	sig_init();
 	srand(time(0));
-	x = argv[1];
+	x = argv[1];	
+
+	char *filename = argv[1];
+	struct sockaddr_in server_add, client_add;
+	int len, port;
+	port = PORT;
 
 	if(pthread_mutex_init(&mute,NULL))
 	{
-		perror("ERROR: pthread_mutex_init(), mutex not initialized");
+		perror("ERROR: pthread_mutex_init(), mutex not initialized.\n");
 		exit(EXIT_FAILURE);
 	}
+		
 	
-	char *filename = argv[1];
-	struct mq_attr attr;
-	
-	attr.mq_flags=0;
-	attr.mq_maxmsg=10;
-	attr.mq_msgsize=100;
-	attr.mq_curmsgs=0;
-	
+	//Get PID 	
 	pid_t parent_pid = getpid();
-	
-	
 	pthread_mutex_lock(&mute);
 	FILE *datafile1 = fopen(argv[1], "a");
 	if (datafile1 == NULL)
@@ -90,81 +86,105 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	fprintf(datafile1,"\nPID Number = %d\n", parent_pid);
+	fprintf(datafile1, "IPC Method used is Sockets.\n");
 	fclose(datafile1);
 	pthread_mutex_unlock(&mute);
 
-	
-	qid = mq_open("/ipc1", O_RDWR | O_CREAT, 0644, &attr);
-	
-	if(qid== -1)
+
+	//Open a Socket
+	if ((soc = socket(AF_INET, SOCK_STREAM, 0))<0)
 	{
-		perror("ERROR : mq_open()");
+		perror("ERROR : socket().\n");
 		exit(EXIT_FAILURE);
 	}
-
-
-	//Reading queues
-	for (int i = 0; i<(ELEMENTS +2); i++)
+	
+	bzero((char *)&server_add,sizeof(server_add));
+	server_add.sin_family = AF_INET;
+	server_add.sin_addr.s_addr = htonl(INADDR_ANY);
+	server_add.sin_port = htons(port);
+	
+	if(bind(soc, (struct sockaddr *)&server_add,sizeof(server_add)))
 	{
-		
-		mq_receive(qid,(char *)&rec,100,NULL);
-		if (res == -1)
+		perror("ERROR : bind()\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	printf("Listening.\n");
+	//Listen to the client
+	
+	listen(soc,5);
+	printf("Listening ahead.\n");
+	client_len = sizeof(client_add);
+	
+	new_soc = accept(soc, (struct sockaddr *)&client_add, &new_soc);
+	if(new_soc < 0)
+	{
+		perror("ERROR : accept().\n");
+	}
+	
+	
+	//Reading data
+	pthread_mutex_lock(&mute);
+	datafile1 = fopen(argv[1], "a");
+	if (datafile1 == NULL)
+	{
+		perror("ERROR : fopen(), File not created.\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	for (int k =0; k <(ELEMENTS+2); k++)
+	{
+		len = read(new_soc, &rec, sizeof(struct data));
+		if(len<0)
 		{
-			perror("ERROR : mq_receive.\n");
-		}
-		
-		pthread_mutex_lock(&mute);
-		FILE *datafile = fopen(argv[1], "a");
-		if (datafile == NULL)
-		{
-			perror("ERROR : fopen(), File not created.\n");
+			perror("ERROR : read().\n");
 			exit(EXIT_FAILURE);
 		}
-		clock_gettime(CLOCK_REALTIME,&timestamp);
-		fprintf(datafile,"\nTimestamp =  %ld seconds and %ld microseconds.\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
-		fprintf(datafile,"Receiving :\n");
-		fprintf(datafile,"STRING = %s \t STRING LENGTH = %d \t LED STATUS = %d.\n", rec.info, rec.length, rec.LED);		
-		fclose(datafile);
-		pthread_mutex_unlock(&mute);
-
-	}
-
-
-	//Writing Queues
-	
-	for (int k = 0; k<(ELEMENTS +2); k++)
-	{
 		
+		clock_gettime(CLOCK_REALTIME,&timestamp);
+		fprintf(datafile1,"\nTimestamp =  %ld seconds and %ld microseconds.\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
+		fprintf(datafile1,"Receiving:\n");
+		fprintf(datafile1,"STRING = %s \t LENGTH = %d \t LED = %d.\n", rec.info, rec.length, rec.LED);
+	}
+	fclose(datafile1);
+	pthread_mutex_unlock(&mute);
+	
+	
+	//Write data
+	pthread_mutex_lock(&mute);
+	datafile1 = fopen(argv[1], "a");
+	if (datafile1 == NULL)
+	{
+		perror("ERROR : fopen(), File not created.\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	for (int i =0; i <(ELEMENTS+2); i++)
+	{
 		random_generator();
-		int s = mq_send(qid, (char*)&rs, sizeof(struct data), 0);
-		if (s == -1)
+		
+		if ((write(new_soc, &rs,sizeof(struct data))) < 0)
 		{
-		perror("ERROR : mq_send.\n");
-		}
-		sleep(1);
-		pthread_mutex_lock(&mute);
-		FILE *datafile = fopen(argv[1], "a");
-		if (datafile == NULL)
-		{
-			perror("ERROR : fopen(), File not created.\n");
+			perror("ERROR : write().\n");
 			exit(EXIT_FAILURE);
 		}
 		clock_gettime(CLOCK_REALTIME,&timestamp);
-		fprintf(datafile,"\nTimestamp =  %ld seconds and %ld microseconds.\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
-		fprintf(datafile,"Sending :\n");
-		fprintf(datafile,"STRING = %s \t STRING LENGTH = %d \t LED STATUS = %d.\n", rs.info, rs.length, rs.LED);		
-		fclose(datafile);
-		pthread_mutex_unlock(&mute);
-	
+		fprintf(datafile1,"\nTimestamp =  %ld seconds and %ld microseconds.\n", timestamp.tv_sec, timestamp.tv_nsec/NSEC_PER_MICROSEC);
+		fprintf(datafile1,"Sending:\n");
+		fprintf(datafile1,"STRING = %s \t LENGTH = %d \t LED = %d.\n", rs.info, rs.length, rs.LED);
 	}
 	
-	//Close queue
-	if(mq_close(qid))
+	fclose(datafile1);
+	pthread_mutex_unlock(&mute);
+	
+	//Closing Socket
+	if(close(new_soc))
 	{
-		perror("ERROR : mq_close()");
-		exit(EXIT_FAILURE);
+		perror("ERROR : close().\n");
+		exit(EXIT_FAILURE);		
 	}
 	
+		
 	//Destroying Mutexes
 	if(pthread_mutex_destroy(&mute))
 	{
@@ -172,7 +192,8 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	
-	//while(1){}		//Uncomment to Check Signal Interruption
+	//while(1){}		//To check signal interruption
+	
 	return 0;
 }
 
@@ -181,7 +202,7 @@ void random_generator()
 {
 	
 	uint32_t random = rand()%(ELEMENTS+2) ;
-	printf("Random = %d",random);
+	//printf("Random = %d",random);
 	switch(random)
 	{
 		case 0:
@@ -267,7 +288,6 @@ void random_generator()
 /*
  * Signal Initialization Function.
  */
-
 void sig_init()
 {
 	struct sigaction send_sig;
@@ -287,6 +307,7 @@ void sig_init()
  */
 void signal_handler(int signo, siginfo_t *info, void *extra)
 {
+	
 	printf("Exit\n");
 	FILE *datafile2;
 	pthread_mutex_lock(&mute);
@@ -297,24 +318,17 @@ void signal_handler(int signo, siginfo_t *info, void *extra)
 		exit(EXIT_FAILURE);
 	}
 	fprintf(datafile2,"\nSIGTERM Interrupted.\n");
-	fprintf(datafile2,"Exiting.\n");
+	fprintf(datafile2,"\nExiting.\n");
 	pthread_mutex_unlock(&mute);
 	fclose(datafile2);
 
-	//Unlink Queues	
-	if(mq_unlink("/ipc1"))
+	//Closing Socket
+	if(close(new_soc))
 	{
-		perror("ERROR : mq_unlink().\n");
-		exit(EXIT_FAILURE);
+		perror("ERROR : close().\n");
+		exit(EXIT_FAILURE);		
 	}
-	
-	//Closing Queue
-	if(mq_close(qid))
-	{
-		perror("ERROR : mq_close()");
-		exit(EXIT_FAILURE);
-	}
-	
+
 	//Destroying Mutexes
 	if(pthread_mutex_destroy(&mute))
 	{

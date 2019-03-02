@@ -1,0 +1,86 @@
+
+PID Number = 195
+IPC Method used is Shared Memory.
+
+Timestamp =  945 seconds and 321755 microseconds.
+Receiving:
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 323062 microseconds.
+Receiving:
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 324283 microseconds.
+Receiving:
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 325084 microseconds.
+Receiving:
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 325669 microseconds.
+Receiving:
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 326076 microseconds.
+Receiving:
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 326335 microseconds.
+Receiving:
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 326745 microseconds.
+Receiving:
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 327152 microseconds.
+Receiving:
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 1.
+
+Timestamp =  945 seconds and 327559 microseconds.
+Receiving:
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 0.
+
+PID Number = 195
+IPC Method used is Shared Memory.
+
+Timestamp =  945 seconds and 329249 microseconds.
+Sending:
+STRING = Boulder 	 STRING LENGTH = 7 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 330274 microseconds.
+Sending:
+STRING = Spider Man 	 STRING LENGTH = 10 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 331133 microseconds.
+Sending:
+STRING = University of Colorado 	 STRING LENGTH = 22 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 331407 microseconds.
+Sending:
+STRING = Hello 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 331837 microseconds.
+Sending:
+STRING = Captain Marvel 	 STRING LENGTH = 14 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 332259 microseconds.
+Sending:
+STRING = World 	 STRING LENGTH = 5 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 332697 microseconds.
+Sending:
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 333119 microseconds.
+Sending:
+STRING = Colorado 	 STRING LENGTH = 8 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 333536 microseconds.
+Sending:
+STRING = Bye World 	 STRING LENGTH = 9 	 LED STATUS = 0.
+
+Timestamp =  945 seconds and 333937 microseconds.
+Sending:
+STRING = University of Colorado 	 STRING LENGTH = 22 	 LED STATUS = 0.
