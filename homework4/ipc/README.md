@@ -1,6 +1,6 @@
 ﻿# Advanced-Embedded-Software-Development
  
-Each Folder Consists of a user space example of IPC bidirectionally communicating messages between two processes or two separate executables using **Pipes, Sockets, Shared Memory, Posix Queues.**It accepts a command line file name to log file entries.   
+Each Folder Consists of a user space example of IPC bidirectionally communicating messages between two processes or two separate executables using **Pipes, Sockets, Shared Memory, Posix Queues.** It accepts a command line file name to log file entries.   
 The processes send messages using **structures** consisting of two types of messages:  
 ->String and its length.  
 ->A command to show the status of an LED. (Actual LED control is not done)   
