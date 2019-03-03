@@ -14,7 +14,7 @@ This folder consists of an animal_sort.c code to create an out of tree kernel mo
 The module should keep a count of all the unique animal types using a data structure from list.h. Linked list has been used in this program for this situation. The module will print three lists: one being a list consisting of duplicates, second being an alphabetically sorted list and the third being a filtered list.
  
 The Filter works in such a way:  
-If none filter is passed, both the linked-list are necessarily same and all the elements are displayed in filtered list meaning no filter has been passed. If count parameter is passed, all the animals with greater than filter count should be present in filtered linked list and displayed. If animal type is passed, only that animal(if present in linked-list) should appear. If both filters are passed (animal type = Frog and count = 2), Frog, only if present more than twice should be present in filtered list and should be printed.  
+If none filter is passed, both the linked-list are necessarily same and all the elements are displayed in filtered list meaning no filter has been passed. If count parameter is passed, all the animals with greater than filter count should be present in filtered linked list and displayed. If animal type is passed, only that animal(if present in linked-list) should appear. If both filters are passed (animal type = Frog and count = 2), Frog, only if present more than twice should be present in filtered list and should be printed.   
 All the parameters i.e the array of animal types, animal name and count can be passed in the animal_list file.  
 
 The program supports the following features:    
