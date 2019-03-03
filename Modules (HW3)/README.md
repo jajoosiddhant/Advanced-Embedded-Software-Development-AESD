@@ -1,6 +1,6 @@
 # Advanced-Embedded-Software-Development
 
-**PROBLEM 3:**  
+**Timer Module:**  
 This folder consists of a timer_module.c code to create an out of tree kernel module in order to run it on Beaglebone Green. The kernel module uses a kernel timer to periodically wakeup every 500 msec by default. Each time timetimer wakes up, a function is executed which prints to the kernel log NAME and a count of how many times the kernel has been fired (this can be viewed using the "dmesg" command on the command line). 
 The kernel module also takes two parameters: a string which needs to be displayed in place of NAME and the timer count time in milliseconds. These parameters need to be specified at the time of inserting the module (example: **sudo insmod timer _module.ko name=Siddhant period=1000**).   
 Using the **lsmod** command would display all the current modules.   
@@ -9,7 +9,7 @@ The folder also consists of a **MAKEFILE** to cross-compile the module code for 
 The Makefile generates the **.ko** file.
 
 
-**PROBLEM 3:**   
+**Module using Linked list:**   
 This folder consists of an animal_sort.c code to create an out of tree kernel module in order to run it on Beaglebone Green. The objective of this program is to create animal-type “sorting” functions in a Linux kernel module. Based on command line parameters for initialization at module insertion, it will construct and initialize 2 internal lists using the Linux kernel data structure definition, constructs and macros(e.g. lists.h). The file which is used to supply 50 animal types is animal_list. This file is used to insert animal types to be used for sorting as parameters. The list may or may not consist of duplicate animal types. The module also takes the animal name and count as parameters and displays only the filtered list using the parameters.   
 The module should keep a count of all the unique animal types using a data structure from list.h. Linked list has been used in this program for this situation. The module will print three lists: one being a list consisting of duplicates, second being an alphabetically sorted list and the third being a filtered list.
  
