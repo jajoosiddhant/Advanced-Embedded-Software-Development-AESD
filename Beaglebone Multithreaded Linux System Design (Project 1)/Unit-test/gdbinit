@@ -1,0 +1,4 @@
+target extended-remote 128.138.189.126:3000
+remote put project1	project1
+set remote exec-file project1
+

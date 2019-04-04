@@ -1,0 +1,7 @@
+Timestamp: 1414744386 seconds and 4872 nanoseconds.
+ERROR: remove(); cannot delete log file.
+No such file or directory.
+
+***********************************
+
+Terminating gracefully due to signal.

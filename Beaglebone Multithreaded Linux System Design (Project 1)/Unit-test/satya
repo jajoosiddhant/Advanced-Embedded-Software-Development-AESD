@@ -1,0 +1,15 @@
+Timestamp: 139943202001391 seconds and 1553666719 nanoseconds.
+ERROR: i2c_open(); in i2c_init() function.
+No such file or directory.
+
+***********************************
+
+In Temperature Thread.
+In logger Thread.
+In light Thread.
+In socket Thread.
+Timestamp: 0 seconds and 0 nanoseconds.
+In logger Thread Light Value: 2.000000.
+
+***********************************
+

@@ -1,0 +1,325 @@
+BIST: Queue initialization successful.
+Signal initialization successful.
+BIST: I2C initialization successful.
+BIST: Temperature Sensor Working
+BIST: Light Sensor Working.
+BIST: Mutex initialization successful.
+BIST: Thread Creation successful.
+Heartbeat Timer initialized.
+Heartbeat Timer started.
+Reached main while loop.
+Entered Socket Thread.
+Entered Logger Thread.
+Entered Light Thread.
+Light Timer initialized.
+Light Timer started.
+Entered Temperature Thread.
+Temperature Timer initialized.
+Temperature Timer started.
+Entered Temperature Thread.
+Temperature Timer initialized.
+Temperature Timer started.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4975 seconds and 354608259 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4975 seconds and 358750759 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Light Sensor Timer fired.
+Timestamp: 4976 seconds and 351365051 nanoseconds.
+Light Value: 0.608000.
+Light State: DARK.
+
+***********************************
+
+Light Timer event handled.
+Light Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4977 seconds and 353952551 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4977 seconds and 357900301 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Light Sensor Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4979 seconds and 351565468 nanoseconds.
+Light Value: 0.608000.
+Light State: DARK.
+
+***********************************
+
+Light Timer event handled.
+Light Heartbeat received.
+Timestamp: 4979 seconds and 357239093 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4981 seconds and 354283218 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4981 seconds and 358350885 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Light Sensor Timer fired.
+Timestamp: 4982 seconds and 351353135 nanoseconds.
+Light Value: 0.608000.
+Light State: DARK.
+
+***********************************
+
+Light Timer event handled.
+Light Heartbeat received.
+Clearing all heartbeat values.
+In Timer Handler: Heartbeat Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4983 seconds and 354180594 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4983 seconds and 358018427 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Light Sensor Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4985 seconds and 352757635 nanoseconds.
+Light Value: 0.608000.
+Light State: DARK.
+
+***********************************
+
+Light Timer event handled.
+Light Heartbeat received.
+Timestamp: 4985 seconds and 359356177 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4987 seconds and 354300511 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4987 seconds and 358300886 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Light Sensor Timer fired.
+Timestamp: 4988 seconds and 351258344 nanoseconds.
+Light Value: 7.265600.
+Light State: LIGHT.
+LIGHT STATE CHANGED FROM 'DARK' to 'LIGHT'
+
+***********************************
+
+Light Timer event handled.
+Light Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4989 seconds and 354218636 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4989 seconds and 357504719 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Light Sensor Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4991 seconds and 351681303 nanoseconds.
+Light Value: 6.657600.
+Light State: LIGHT.
+
+***********************************
+
+Light Timer event handled.
+Light Heartbeat received.
+Timestamp: 4991 seconds and 356755511 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+Clearing all heartbeat values.
+In Timer Handler: Heartbeat Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4993 seconds and 353836761 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4993 seconds and 357290636 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Light Sensor Timer fired.
+Timestamp: 4994 seconds and 351380137 nanoseconds.
+Light Value: 6.232000.
+Light State: LIGHT.
+
+***********************************
+
+Light Timer event handled.
+Light Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4995 seconds and 354748845 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+Timestamp: 4995 seconds and 357224428 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Light Sensor Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4997 seconds and 352683554 nanoseconds.
+Light Value: 0.608000.
+Light State: DARK.
+LIGHT STATE CHANGED FROM 'LIGHT' to 'DARK'
+
+***********************************
+
+Light Timer event handled.
+Light Heartbeat received.
+Timestamp: 4997 seconds and 359291220 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4999 seconds and 354324137 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 4999 seconds and 358425095 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+In Timer Handler: Light Sensor Timer fired.
+Timestamp: 5000 seconds and 351343304 nanoseconds.
+Light Value: 0.608000.
+Light State: DARK.
+
+***********************************
+
+Light Timer event handled.
+Light Heartbeat received.
+In Timer Handler: Temperature Sensor Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 5001 seconds and 354825596 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+Timestamp: 5001 seconds and 357330262 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+Clearing all heartbeat values.
+In Timer Handler: Heartbeat Timer fired.
+In Timer Handler: Light Sensor Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+In Timer Handler: Temperature Sensor Timer fired.
+Timestamp: 5003 seconds and 353555096 nanoseconds.
+Light Value: 0.608000.
+Light State: DARK.
+
+***********************************
+
+Light Timer event handled.
+Light Heartbeat received.
+Timestamp: 5003 seconds and 359639554 nanoseconds.
+Temperature Value Recorded: 24.312500 Celsius.
+
+***********************************
+
+Temperature Timer event handled.
+Temperaure Heartbeat received.
+Terminating gracefully due to signal.

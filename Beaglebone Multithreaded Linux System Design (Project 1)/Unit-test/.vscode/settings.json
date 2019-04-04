@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "types.h": "c",
+        "stat.h": "c",
+        "my_signal.h": "c",
+        "errno.h": "c",
+        "main.h": "c",
+        "temp.h": "c",
+        "gpio.h": "c",
+        "sockets.h": "c",
+        "logger.h": "c"
+    }
+}

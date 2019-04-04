@@ -7,7 +7,9 @@
  * @date 2019-03-30
  * 
  * @references: http://derekmolloy.ie/writing-a-linux-kernel-module-part-2-a-character-device/
- * 
+ * https://www.kernel.org/doc/html/v4.14/driver-api/i2c.html
+ * http://renjucnair.blogspot.com/2012/01/writing-i2c-driver.html
+ * https://github.com/torvalds/linux/blob/master/include/linux/i2c.h
  * 
  * @copyright Copyright (c) 2019
  * 
@@ -194,7 +196,7 @@ static ssize_t my_write(struct file *filep, const char __user *buffer, size_t le
     char *tmp;
     struct i2c_client *client;
     client = filep->private_data;
-    printk(KERN_INFO "Reading data using I2C.\n");
+    printk(KERN_INFO "Writing data using I2C.\n");
 
     if (len > 8192)
         len = 8192;
@@ -227,7 +229,7 @@ static ssize_t my_read(struct file *filep, char __user *buffer, size_t len, loff
     int res;
     struct i2c_client *client;
 
-    printk(KERN_INFO "Writing data using I2C.\n");
+    printk(KERN_INFO "Reading data using I2C.\n");
     client = filep->private_data;
 
     if (len > 8192)
