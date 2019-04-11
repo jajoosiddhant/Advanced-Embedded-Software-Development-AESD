@@ -61,9 +61,6 @@ xSemaphoreHandle g_qsem;
 // Global variable to hold the system clock speed.
 uint32_t g_ui32SysClock;
 
-// The mutex that protects concurrent access of I2C from multiple tasks.
-//xSemaphoreHandle g_xI2CSemaphore;
-
 //Semaphores for temperature and led.
 xSemaphoreHandle g_temp;
 xSemaphoreHandle g_led;
@@ -73,9 +70,6 @@ QueueHandle_t log_mq;
 
 //Task ID
 TaskHandle_t alert_id;
-
-// Global instance structure for the I2C master driver.
-//tI2CMInstance g_sI2CInst;
 
 // Counter value used by the FreeRTOS run time stats feature.
 // http://www.freertos.org/rtos-run-time-stats.html
@@ -110,10 +104,6 @@ void temp_timer0handler(void)
     // Clear the timer interrupt.
     ROM_TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 
-    xSemaphoreTake(g_uartsem,portMAX_DELAY);
-    UARTprintf("Temperature Timer Triggered.\n");
-    xSemaphoreGive(g_uartsem);
-
     //Release the Semaphore for the Temperature Task
     xSemaphoreGive(g_temp);
 
@@ -136,10 +126,6 @@ void led_timer0handler(void)
 
     // Clear the timer interrupt.
     ROM_TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
-
-//    xSemaphoreTake(g_uartsem,portMAX_DELAY);
-//    UARTprintf("LED Timer Triggered.\n");
-//    xSemaphoreGive(g_uartsem);
 
     //Release the Semaphore for the LED Task
     xSemaphoreGive(g_led);
@@ -175,7 +161,7 @@ void alert(void *pvParameters)
 uint8_t alerttask_init(void)
 {
     if(xTaskCreate(alert, (const portCHAR *)"alert", LEDTASKSTACKSIZE, NULL,
-                   tskIDLE_PRIORITY, alert_id) != pdTRUE)
+                   tskIDLE_PRIORITY, &alert_id) != pdTRUE)
     {
         UARTprintf("Failed to create Alert Task.\n");
         return(1);
@@ -295,21 +281,23 @@ void ConfigureUART(void)
 void configure_i2c(void)
 {
     //GPIO Peripheral Enable
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C7);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);
+
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C2);
+    SysCtlPeripheralReset(SYSCTL_PERIPH_I2C2);
 
     // Wait for the Peripheral to be ready for programming
-    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOD)
-            || !SysCtlPeripheralReady(SYSCTL_PERIPH_I2C7));
+    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPION)
+            || !SysCtlPeripheralReady(SYSCTL_PERIPH_I2C2));
 
     // Configure Pins for I2C7 Master Interface
-    GPIOPinConfigure(GPIO_PD0_I2C7SCL);
-    GPIOPinConfigure(GPIO_PD1_I2C7SDA);
-    GPIOPinTypeI2C(GPIO_PORTD_BASE, GPIO_PIN_1);
-    GPIOPinTypeI2CSCL(GPIO_PORTD_BASE, GPIO_PIN_0);
+    GPIOPinConfigure(GPIO_PN5_I2C2SCL);
+    GPIOPinConfigure(GPIO_PN4_I2C2SDA);
+    GPIOPinTypeI2C(GPIO_PORTN_BASE, GPIO_PIN_4);
+    GPIOPinTypeI2CSCL(GPIO_PORTN_BASE, GPIO_PIN_5);
 
     // Initialize and Configure the Master Module
-    I2CMasterInitExpClk(I2C7_BASE, g_ui32SysClock, false);
+    I2CMasterInitExpClk(I2C2_BASE, g_ui32SysClock, false);
 }
 
 
@@ -320,11 +308,6 @@ void configure_i2c(void)
  */
 int main(void)
 {
-    // Enable lazy stacking for interrupt handlers.  This allows floating-point
-    // instructions to be used within interrupt handlers, but at the expense of
-    // extra stack usage.
-//    ROM_FPULazyStackingEnable();
-
     // Configure the system frequency.
     g_ui32SysClock = MAP_SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
                                              SYSCTL_OSC_MAIN |
@@ -395,7 +378,7 @@ int main(void)
         }
     }
 
-    // Create Alert Task.
+//     Create Alert Task.
     if(alerttask_init() != 0)
     {
         while(1)

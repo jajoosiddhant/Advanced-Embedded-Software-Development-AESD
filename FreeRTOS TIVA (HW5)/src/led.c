@@ -63,12 +63,11 @@ void led_send(void)
     xSemaphoreTake(g_qsem,portMAX_DELAY);
     if(xQueueSend(log_mq, &info, portMAX_DELAY) != pdTRUE)
     {
-//        xSemaphoreTake(g_uartsem,portMAX_DELAY);
+        xSemaphoreTake(g_uartsem,portMAX_DELAY);
         UARTprintf("LED Data Send failed.\n");
-//        xSemaphoreGive(g_uartsem);
+        xSemaphoreGive(g_uartsem);
     }
     xSemaphoreGive(g_qsem);
-
 }
 
 
@@ -95,10 +94,7 @@ static void led(void *pvParameters)
         led0 ^= (GPIO_PIN_0);
         led1 ^= (GPIO_PIN_1);
 
+        //Sending LED data to logger task.
         led_send();
-
-        // xSemaphoreTake(g_uartsem,portMAX_DELAY);
-        // UARTprintf("Welcome to LED Task.\n");
-        // xSemaphoreGive(g_uartsem);
     }
 }

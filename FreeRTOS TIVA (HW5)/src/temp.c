@@ -34,12 +34,12 @@ uint8_t temptask_init(void)
 void temp_write(void)
 {
 
-    I2CMasterSlaveAddrSet(I2C7_BASE, SLAVE_ADDR, false);
-    I2CMasterDataPut(I2C7_BASE, CONFIG_TEMP);
-    I2CMasterControl(I2C7_BASE, I2C_MASTER_CMD_SINGLE_SEND);
+    I2CMasterSlaveAddrSet(I2C2_BASE, SLAVE_ADDR, false);
+    I2CMasterDataPut(I2C2_BASE, CONFIG_TEMP);
+    I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_SINGLE_SEND);
 
-    while(!I2CMasterBusy(I2C7_BASE));
-    while(I2CMasterBusy(I2C7_BASE));
+    while(!I2CMasterBusy(I2C2_BASE));
+    while(I2CMasterBusy(I2C2_BASE));
 
 }
 
@@ -55,20 +55,20 @@ float temp_read(void)
 
     temp_write();
 
-    I2CMasterSlaveAddrSet(I2C7_BASE, SLAVE_ADDR, true);
-    I2CMasterControl(I2C7_BASE, I2C_MASTER_CMD_BURST_RECEIVE_START);
+    I2CMasterSlaveAddrSet(I2C2_BASE, SLAVE_ADDR, true);
+    I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_BURST_RECEIVE_START);
 
-    while(!I2CMasterBusy(I2C7_BASE));
-    while(I2CMasterBusy(I2C7_BASE));
+    while(!I2CMasterBusy(I2C2_BASE));
+    while(I2CMasterBusy(I2C2_BASE));
 
-    temp = I2CMasterDataGet(I2C7_BASE);
+    temp = I2CMasterDataGet(I2C2_BASE);
     temp <<= 8;
-    I2CMasterControl(I2C7_BASE, I2C_MASTER_CMD_BURST_RECEIVE_FINISH);
+    I2CMasterControl(I2C2_BASE, I2C_MASTER_CMD_BURST_RECEIVE_FINISH);
 
-    while(!I2CMasterBusy(I2C7_BASE));
-    while(I2CMasterBusy(I2C7_BASE));
+    while(!I2CMasterBusy(I2C2_BASE));
+    while(I2CMasterBusy(I2C2_BASE));
 
-    temp |= I2CMasterDataGet(I2C7_BASE);
+    temp |= I2CMasterDataGet(I2C2_BASE);
 
     temp >>= 4;
     final_temp = temp * 0.0625;
@@ -97,9 +97,9 @@ void temp_send(void)
     xSemaphoreTake(g_qsem,portMAX_DELAY);
     if(xQueueSend(log_mq, &info, portMAX_DELAY) != pdTRUE)
     {
-//        xSemaphoreTake(g_uartsem,portMAX_DELAY);
+        xSemaphoreTake(g_uartsem,portMAX_DELAY);
         UARTprintf("Temperature Data Send failed.\n");
-//        xSemaphoreGive(g_uartsem);
+        xSemaphoreGive(g_uartsem);
     }
     xSemaphoreGive(g_qsem);
 }
@@ -115,10 +115,7 @@ static void temp(void *pvParameters)
     {
         xSemaphoreTake(g_temp,portMAX_DELAY);
 
-//        xSemaphoreTake(g_uartsem,portMAX_DELAY);
-//        UARTprintf("Welcome to Temperature Task.\n");
-//        xSemaphoreGive(g_uartsem);
-
+        //Reading and sending temperature to the logger task.
         temp_send();
     }
 }

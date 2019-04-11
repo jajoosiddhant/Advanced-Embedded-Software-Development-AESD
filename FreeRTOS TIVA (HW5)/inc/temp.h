@@ -41,7 +41,6 @@
 //Macros for Events triggered
 #define TEMP_RCV_ID     (1)
 #define LED_RCV_ID      (2)
-#define TEMP_ALERT_ID   (3)
 
 extern xSemaphoreHandle g_uartsem;
 extern xSemaphoreHandle g_qsem;
