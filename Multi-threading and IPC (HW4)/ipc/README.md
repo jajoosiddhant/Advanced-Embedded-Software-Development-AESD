@@ -2,8 +2,9 @@
  
 Each Folder Consists of a user space example of IPC bidirectionally communicating messages between two processes or two separate executables using **Pipes, Sockets, Shared Memory, Posix Queues.** It accepts a command line file name to log file entries.   
 The processes send messages using **structures** consisting of two types of messages:  
-->String and its length.  
-->A command to show the status of an LED. (Actual LED control is not done)   
+- String and its length.  
+- A command to show the status of an LED. (Actual LED control is not done)  
+
 These strings and command were sent randomly from an array using a random function. The case 9 and 10 represents LED OFF and LED ON.  
 Initially each code in each folder prints its PID and the IPC method with a timestamp being used to a log file. Then, a tag indicating whether it is sending or receiving along with the Message contents.  
 Eg : [Timestamp]	Sending/Receiving:	<Message Contents>   
