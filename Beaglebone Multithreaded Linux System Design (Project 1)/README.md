@@ -31,6 +31,8 @@ This project was completed in the course Advanced Embedded Software Development 
 - Request Tempertaure and Light data from remote host using Sockets.
 
 ## Block Diagram:
+<img src="Images/block%20diagram.PNG">
+
 
 ## Overview:
 This project designs and implements a smart environment monitoring device using Beaglebone Green development board along with two off-board sensors. The project design includes concurrent software concepts for Linux that will interact with both User-Space and Kernel-Space in addition to multiple connected devices.
