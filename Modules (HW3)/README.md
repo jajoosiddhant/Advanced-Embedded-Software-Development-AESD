@@ -2,7 +2,7 @@
 
 **Timer Module:**  
 This folder consists of a timer_module.c code to create an out of tree kernel module in order to run it on Beaglebone Green. The kernel module uses a kernel timer to periodically wakeup every 500 msec by default. Each time timetimer wakes up, a function is executed which prints to the kernel log NAME and a count of how many times the kernel has been fired (this can be viewed using the "dmesg" command on the command line). 
-The kernel module also takes two parameters: a string which needs to be displayed in place of NAME and the timer count time in milliseconds. These parameters need to be specified at the time of inserting the module (example: **sudo insmod timer _module.ko name=Siddhant period=1000**).   
+The kernel module also takes two parameters: a string which needs to be displayed in place of NAME and the timer count time in milliseconds. These parameters need to be specified at the time of inserting the module (example: 'sudo insmod timer _module.ko name=Siddhant period=1000').   
 Using the **lsmod** command would display all the current modules.   
 **sudo rmmod timer_module.ko** is used to remove the module.    
 The folder also consists of a **MAKEFILE** to cross-compile the module code for Beaglebone Green on UBUNTU using buildroot.    
